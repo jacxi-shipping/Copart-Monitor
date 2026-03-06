@@ -132,28 +132,51 @@ def search_playwright(makes, damage_types, year_min=None, year_max=None, max_odo
 
         time.sleep(6)
 
-        # Paginate through all available pages
+        # Copart uses both pagination buttons AND infinite scroll
+        # Try clicking next page button first, fall back to scroll-based pagination
         current_page = 1
+        last_count = 0
+
         while current_page < max_pages:
+            # Strategy 1: click next page button
+            clicked = False
             try:
                 next_btn = page.query_selector(
                     "button[aria-label='Next page']:not([disabled]), "
                     "a[aria-label='Next page'], "
-                    "li.pagination-next:not(.disabled) a"
+                    "li.pagination-next:not(.disabled) a, "
+                    ".next-page:not([disabled]), "
+                    "[data-page='next']",
                 )
-                if not next_btn:
-                    logger.info("No next page button — stopping at page %d", current_page)
-                    break
-                next_btn.click()
-                current_page += 1
-                time.sleep(4)
+                if next_btn and next_btn.is_visible():
+                    next_btn.click()
+                    clicked = True
+                    logger.info("Clicked next page button (page %d)", current_page + 1)
+            except Exception:
+                pass
+
+            # Strategy 2: scroll to bottom to trigger infinite scroll
+            if not clicked:
                 try:
-                    page.wait_for_load_state("networkidle", timeout=15_000)
-                except PWTimeout:
+                    page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+                    logger.info("Scrolled to bottom (page %d)", current_page + 1)
+                except Exception:
                     pass
-            except Exception as e:
-                logger.debug("Pagination error: %s", e)
+
+            time.sleep(4)
+            try:
+                page.wait_for_load_state("networkidle", timeout=10_000)
+            except PWTimeout:
+                pass
+
+            # Check if we got new lots
+            if len(intercepted) == last_count:
+                logger.info("No new lots after page %d — stopping", current_page)
                 break
+
+            last_count = len(intercepted)
+            current_page += 1
+            logger.info("Page %d: %d total lots intercepted so far", current_page, len(intercepted))
 
         logger.info("Playwright: scraped %d page(s), intercepted %d total lots", current_page, len(intercepted))
         browser.close()
