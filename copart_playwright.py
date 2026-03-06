@@ -1,6 +1,7 @@
 """
 Playwright-based fallback scraper for Copart.
-Intercepts network responses from Copart's internal search API.
+Intercepts network responses from Copart's internal search-results API.
+Visits homepage first for cookies, then navigates to search page.
 """
 
 import logging
@@ -12,14 +13,13 @@ SEARCH_URL = "https://www.copart.com/lotSearchResults/"
 
 
 def _build_search_url(makes, damage_types):
+    """Build URL — Copart ignores these params server-side but they help set context."""
     from urllib.parse import quote
     query_parts = []
     if makes:
-        encoded = quote(",".join(m.upper() for m in makes), safe=",")
-        query_parts.append(f"makeList={encoded}")
+        query_parts.append(f"makeList={quote(','.join(m.upper() for m in makes), safe=',')}")
     if damage_types:
-        encoded = quote(",".join(d.upper() for d in damage_types), safe=",")
-        query_parts.append(f"damageList={encoded}")
+        query_parts.append(f"damageList={quote(','.join(d.upper() for d in damage_types), safe=',')}")
     query = "&".join(query_parts)
     return f"{SEARCH_URL}?{query}" if query else SEARCH_URL
 
@@ -33,8 +33,8 @@ def _matches_filters(raw, makes, damage_types, year_min=None, year_max=None, max
         lot_damage = (raw.get("dd") or raw.get("dmg") or "").upper()
         if not any(d.upper() in lot_damage for d in damage_types):
             return False
-    lot_year = raw.get("y")
-    if lot_year:
+    lot_year = raw.get("lcy") or raw.get("y")
+    if lot_year is not None:
         try:
             y = int(lot_year)
             if year_min and y < year_min:
@@ -47,8 +47,7 @@ def _matches_filters(raw, makes, damage_types, year_min=None, year_max=None, max
         raw_odo = raw.get("orr") or raw.get("od")
         if raw_odo is not None:
             try:
-                odo = int(str(raw_odo).replace(",", "").strip())
-                if odo > max_odometer:
+                if int(str(raw_odo).replace(",", "").strip()) > max_odometer:
                     return False
             except (ValueError, TypeError):
                 pass
@@ -72,7 +71,6 @@ def search_playwright(makes, damage_types, year_min=None, year_max=None, max_odo
                 "--disable-setuid-sandbox",
                 "--disable-blink-features=AutomationControlled",
                 "--disable-dev-shm-usage",
-                "--disable-web-security",
                 "--window-size=1280,900",
             ],
         )
@@ -83,10 +81,7 @@ def search_playwright(makes, damage_types, year_min=None, year_max=None, max_odo
                 "Chrome/122.0.0.0 Safari/537.36"
             ),
             viewport={"width": 1280, "height": 900},
-            extra_http_headers={
-                "Accept-Language": "en-US,en;q=0.9",
-                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-            },
+            extra_http_headers={"Accept-Language": "en-US,en;q=0.9"},
             java_script_enabled=True,
         )
         context.add_init_script("""
@@ -102,28 +97,25 @@ def search_playwright(makes, damage_types, year_min=None, year_max=None, max_odo
             try:
                 if response.status != 200:
                     return
-                ct = response.headers.get("content-type", "")
-                if "application/json" not in ct:
+                if "application/json" not in response.headers.get("content-type", ""):
                     return
-                resp_url = response.url
-                if "copart.com" not in resp_url:
+                if "copart.com" not in response.url:
                     return
                 data = response.json()
                 content = (
                     data.get("data", {}).get("results", {}).get("content")
                     or data.get("returnObject", {}).get("results", {}).get("content")
-                    or data.get("results", {}).get("content")
                     or []
                 )
                 if content:
-                    logger.info("Intercepted %d lots from: %s", len(content), resp_url)
+                    logger.info("Intercepted %d lots from: %s", len(content), response.url)
                     intercepted.extend(content)
             except Exception as e:
                 logger.debug("Response intercept error: %s", e)
 
         page.on("response", handle_response)
 
-        # Step 1: visit homepage first to get cookies
+        # Visit homepage first to get cookies
         logger.info("Visiting Copart homepage for cookies...")
         try:
             page.goto("https://www.copart.com/", wait_until="domcontentloaded", timeout=20_000)
@@ -131,56 +123,55 @@ def search_playwright(makes, damage_types, year_min=None, year_max=None, max_odo
         except Exception as e:
             logger.warning("Homepage visit failed: %s", e)
 
-        # Step 2: navigate to search results
+        # Navigate to search results
         logger.info("Navigating to search: %s", url)
         try:
             page.goto(url, wait_until="domcontentloaded", timeout=45_000)
         except PWTimeout:
             logger.warning("domcontentloaded timeout")
 
-        # Wait for JS to execute and fire API calls
         time.sleep(6)
 
-        # Scroll to trigger lazy loading
-        try:
-            page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-            time.sleep(2)
-            page.evaluate("window.scrollTo(0, 0)")
-            time.sleep(1)
-        except Exception:
-            pass
+        # Paginate through all available pages
+        current_page = 1
+        while current_page < max_pages:
+            try:
+                next_btn = page.query_selector(
+                    "button[aria-label='Next page']:not([disabled]), "
+                    "a[aria-label='Next page'], "
+                    "li.pagination-next:not(.disabled) a"
+                )
+                if not next_btn:
+                    logger.info("No next page button — stopping at page %d", current_page)
+                    break
+                next_btn.click()
+                current_page += 1
+                time.sleep(4)
+                try:
+                    page.wait_for_load_state("networkidle", timeout=15_000)
+                except PWTimeout:
+                    pass
+            except Exception as e:
+                logger.debug("Pagination error: %s", e)
+                break
 
-        # Debug info
-        try:
-            title = page.title()
-            page_url = page.url
-            body = page.inner_text("body") if page.query_selector("body") else ""
-            logger.info("Page title: '%s'", title)
-            logger.info("Page URL: %s", page_url)
-            logger.info("Body preview: %s", body[:400].replace("\n", " "))
-        except Exception as ex:
-            logger.info("Debug error: %s", ex)
-
+        logger.info("Playwright: scraped %d page(s), intercepted %d total lots", current_page, len(intercepted))
         browser.close()
 
-    # Debug: log first lot's raw keys and values
-    if intercepted:
-        sample = intercepted[0]
-        logger.info("SAMPLE RAW KEYS: %s", sorted(sample.keys()))
-        logger.info("SAMPLE VALUES: lcy=%s mkn=%s dd=%s orr=%s ln=%s",
-            sample.get("lcy"), sample.get("mkn"), sample.get("dd"),
-            sample.get("orr"), sample.get("ln"))
-
-    before = len(intercepted)
-    filtered = []
+    # Deduplicate by lot number
+    seen_ln = set()
+    unique = []
     for raw in intercepted:
-        passed = _matches_filters(raw, makes, damage_types, year_min, year_max, max_odometer)
-        logger.info("LOT %s | make=%-12s | damage=%-25s | year=%s | odo=%s | pass=%s",
-            raw.get("ln", ""), raw.get("mkn", ""), raw.get("dd", ""),
-            raw.get("lcy", "?"), raw.get("orr", "?"), passed)
-        if passed:
-            filtered.append(raw)
-    logger.info("Client-side filter: %d intercepted → %d matched", before, len(filtered))
+        ln = str(raw.get("ln") or raw.get("lotNumberStr") or "")
+        if ln and ln not in seen_ln:
+            seen_ln.add(ln)
+            unique.append(raw)
+
+    logger.info("After dedup: %d unique lots", len(unique))
+
+    # Apply filters
+    filtered = [r for r in unique if _matches_filters(r, makes, damage_types, year_min, year_max, max_odometer)]
+    logger.info("After client-side filter: %d matched", len(filtered))
 
     results = [_parse_lot(raw) for raw in filtered]
     results = [r for r in results if r.get("lot_number")]
@@ -206,5 +197,5 @@ def _parse_lot(raw):
         "location": raw.get("yn"),
         "estimate": raw.get("la") or raw.get("lv"),
         "image_url": raw.get("tims"),
-        "url": f"https://www.copart.com/lot/{lot_number}/{raw.get('ldu','')}".rstrip("/"),
+        "url": f"https://www.copart.com/lot/{lot_number}/{raw.get('ldu', '')}".rstrip("/"),
     }
