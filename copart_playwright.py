@@ -1,7 +1,6 @@
 """
 Playwright-based fallback scraper for Copart.
-Uses network response interception to capture Copart's internal
-search API calls — more reliable than DOM scraping.
+Intercepts network responses from Copart's internal search API.
 """
 
 import logging
@@ -13,7 +12,6 @@ SEARCH_URL = "https://www.copart.com/lotSearchResults/"
 
 
 def _build_search_url(makes, damage_types):
-    """Build Copart search URL — navigating here triggers the real API calls."""
     from urllib.parse import quote
     query_parts = []
     if makes:
@@ -27,20 +25,14 @@ def _build_search_url(makes, damage_types):
 
 
 def _matches_filters(raw, makes, damage_types, year_min=None, year_max=None, max_odometer=None):
-    """Check if a raw lot matches the requested filters."""
-    # Make filter
     if makes:
         lot_make = (raw.get("mkn") or raw.get("mk") or "").upper()
         if not any(m.upper() in lot_make for m in makes):
             return False
-
-    # Damage filter
     if damage_types:
         lot_damage = (raw.get("dd") or raw.get("dmg") or "").upper()
         if not any(d.upper() in lot_damage for d in damage_types):
             return False
-
-    # Year filter
     lot_year = raw.get("y")
     if lot_year:
         try:
@@ -51,9 +43,6 @@ def _matches_filters(raw, makes, damage_types, year_min=None, year_max=None, max
                 return False
         except (ValueError, TypeError):
             pass
-
-    # Odometer filter — exclude lots that exceed max miles
-    # Lots with no odometer reading are kept (unknown mileage)
     if max_odometer is not None:
         raw_odo = raw.get("orr") or raw.get("od")
         if raw_odo is not None:
@@ -63,15 +52,10 @@ def _matches_filters(raw, makes, damage_types, year_min=None, year_max=None, max
                     return False
             except (ValueError, TypeError):
                 pass
-
     return True
 
 
 def search_playwright(makes, damage_types, year_min=None, year_max=None, max_odometer=None, max_pages=3):
-    """
-    Open Copart in headless Chromium and intercept the internal
-    search API responses — much more reliable than DOM scraping.
-    """
     try:
         from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
     except ImportError:
@@ -88,6 +72,8 @@ def search_playwright(makes, damage_types, year_min=None, year_max=None, max_odo
                 "--disable-setuid-sandbox",
                 "--disable-blink-features=AutomationControlled",
                 "--disable-dev-shm-usage",
+                "--disable-web-security",
+                "--window-size=1280,900",
             ],
         )
         context = browser.new_context(
@@ -97,15 +83,21 @@ def search_playwright(makes, damage_types, year_min=None, year_max=None, max_odo
                 "Chrome/122.0.0.0 Safari/537.36"
             ),
             viewport={"width": 1280, "height": 900},
-            extra_http_headers={"Accept-Language": "en-US,en;q=0.9"},
+            extra_http_headers={
+                "Accept-Language": "en-US,en;q=0.9",
+                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+            },
+            java_script_enabled=True,
         )
-        context.add_init_script(
-            "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
-        )
+        context.add_init_script("""
+            Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
+            Object.defineProperty(navigator, 'plugins', {get: () => [1,2,3]});
+            Object.defineProperty(navigator, 'languages', {get: () => ['en-US', 'en']});
+            window.chrome = { runtime: {} };
+        """)
 
         page = context.new_page()
 
-        # Intercept Copart's internal search API responses
         def handle_response(response):
             try:
                 if response.status != 200:
@@ -114,10 +106,9 @@ def search_playwright(makes, damage_types, year_min=None, year_max=None, max_odo
                 if "application/json" not in ct:
                     return
                 resp_url = response.url
-                if not any(k in resp_url for k in ["search", "lot", "result", "copart.com"]):
+                if "copart.com" not in resp_url:
                     return
                 data = response.json()
-                # Try multiple response shapes
                 content = (
                     data.get("data", {}).get("results", {}).get("content")
                     or data.get("returnObject", {}).get("results", {}).get("content")
@@ -132,58 +123,54 @@ def search_playwright(makes, damage_types, year_min=None, year_max=None, max_odo
 
         page.on("response", handle_response)
 
-        logger.info("Playwright: navigating to %s", url)
+        # Step 1: visit homepage first to get cookies
+        logger.info("Visiting Copart homepage for cookies...")
         try:
-            page.goto(url, wait_until="networkidle", timeout=45_000)
+            page.goto("https://www.copart.com/", wait_until="domcontentloaded", timeout=20_000)
+            time.sleep(2)
+        except Exception as e:
+            logger.warning("Homepage visit failed: %s", e)
+
+        # Step 2: navigate to search results
+        logger.info("Navigating to search: %s", url)
+        try:
+            page.goto(url, wait_until="domcontentloaded", timeout=45_000)
         except PWTimeout:
-            logger.warning("networkidle timeout — checking what loaded")
+            logger.warning("domcontentloaded timeout")
 
-        time.sleep(5)
+        # Wait for JS to execute and fire API calls
+        time.sleep(6)
 
+        # Scroll to trigger lazy loading
         try:
-            logger.info("Page title: %s", page.title())
-            logger.info("Page URL after load: %s", page.url)
-            # Save screenshot for debugging
-            page.screenshot(path="/tmp/copart_debug.png")
-            logger.info("Screenshot saved to /tmp/copart_debug.png")
-            # Log first 500 chars of page text to see what loaded
-            body_text = page.inner_text("body")[:500] if page.query_selector("body") else "(no body)"
-            logger.info("Page body preview: %s", body_text.replace(chr(10), " ")[:300])
-        except Exception as ex:
-            logger.info("Debug info error: %s", ex)
+            page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+            time.sleep(2)
+            page.evaluate("window.scrollTo(0, 0)")
+            time.sleep(1)
+        except Exception:
+            pass
 
-        # Paginate if we got results and need more
-        if intercepted and max_pages > 1:
-            for pg in range(1, max_pages):
-                try:
-                    next_btn = page.query_selector(
-                        "button[aria-label='Next page'], "
-                        "a[aria-label='Next page'], "
-                        "li.pagination-next:not(.disabled) a"
-                    )
-                    if not next_btn:
-                        break
-                    next_btn.click()
-                    time.sleep(3)
-                    try:
-                        page.wait_for_load_state("networkidle", timeout=15_000)
-                    except PWTimeout:
-                        pass
-                except Exception as e:
-                    logger.debug("Pagination error: %s", e)
-                    break
+        # Debug info
+        try:
+            title = page.title()
+            page_url = page.url
+            body = page.inner_text("body") if page.query_selector("body") else ""
+            logger.info("Page title: '%s'", title)
+            logger.info("Page URL: %s", page_url)
+            logger.info("Body preview: %s", body[:400].replace("\n", " "))
+        except Exception as ex:
+            logger.info("Debug error: %s", ex)
 
         browser.close()
 
-    # Apply strict client-side filtering to remove non-matching lots
     before = len(intercepted)
     filtered = [
         raw for raw in intercepted
         if _matches_filters(raw, makes, damage_types, year_min, year_max, max_odometer)
     ]
     logger.info(
-        "Client-side filter: %d intercepted → %d matched (makes=%s, damage=%s, years=%s-%s, max_odo=%s)",
-        before, len(filtered), makes, damage_types, year_min or "*", year_max or "*", max_odometer or "*",
+        "Client-side filter: %d intercepted → %d matched",
+        before, len(filtered),
     )
 
     results = [_parse_lot(raw) for raw in filtered]
@@ -193,7 +180,6 @@ def search_playwright(makes, damage_types, year_min=None, year_max=None, max_odo
 
 
 def _parse_lot(raw):
-    """Normalize a raw Copart lot dict."""
     lot_number = str(raw.get("lotNumberStr") or raw.get("ln") or "")
     return {
         "lot_number": lot_number,
