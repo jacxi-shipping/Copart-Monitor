@@ -55,8 +55,8 @@ def build_payload(makes, damage_types, year_min=None, year_max=None,
     elif year_max:
         filters["YEAR"] = [f"lot_year:[* TO {year_max}]"]
 
-    if makes:
-        filters["MAKE"] = [f'make:"{m.upper()}"' for m in makes]
+    # NOTE: MAKE filter causes server error on Copart US — filter client-side instead
+    # if makes: filters["MAKE"] = ...
 
     if damage_types:
         prid = []
@@ -68,8 +68,7 @@ def build_payload(makes, damage_types, year_min=None, year_max=None,
                 prid.append(f'damage_description:"{key}"')
         filters["PRID"] = prid
 
-    if max_odometer:
-        filters["ODM"] = [f"orr:[0 TO {max_odometer}]"]
+    # ODM/orr field name unverified for US — filter client-side instead
 
     return {
         "query": ["*"],
