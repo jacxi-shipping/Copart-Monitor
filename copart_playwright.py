@@ -1,7 +1,7 @@
 """
-Playwright-based fallback scraper for Copart.
-Intercepts network responses from Copart's internal search-results API.
-Visits homepage first for cookies, then navigates to search page.
+Playwright-based scraper for Copart US.
+Uses real browser to intercept search-results API responses.
+Navigates pages by clicking pagination numbers directly.
 """
 
 import logging
@@ -9,11 +9,8 @@ import time
 
 logger = logging.getLogger(__name__)
 
-SEARCH_URL = "https://www.copart.com/lotSearchResults/"
-
 
 def _build_search_url(makes, damage_types):
-    """Build URL — Copart ignores these params server-side but they help set context."""
     from urllib.parse import quote
     query_parts = []
     if makes:
@@ -21,7 +18,7 @@ def _build_search_url(makes, damage_types):
     if damage_types:
         query_parts.append(f"damageList={quote(','.join(d.upper() for d in damage_types), safe=',')}")
     query = "&".join(query_parts)
-    return f"{SEARCH_URL}?{query}" if query else SEARCH_URL
+    return f"https://www.copart.com/lotSearchResults/?{query}" if query else "https://www.copart.com/lotSearchResults/"
 
 
 def _matches_filters(raw, makes, damage_types, year_min=None, year_max=None, max_odometer=None):
@@ -54,7 +51,40 @@ def _matches_filters(raw, makes, damage_types, year_min=None, year_max=None, max
     return True
 
 
-def search_playwright(makes, damage_types, year_min=None, year_max=None, max_odometer=None, max_pages=3):
+def _parse_lot(raw):
+    lot_number = str(raw.get("ln") or raw.get("lotNumberStr") or "")
+    year  = raw.get("lcy") or raw.get("y") or raw.get("yr")
+    make  = raw.get("mkn") or raw.get("mk")
+    model = raw.get("lm")  or raw.get("mdn") or raw.get("md")
+    damage = raw.get("dd") or raw.get("dmg")
+    return {
+        "lot_number": lot_number,
+        "title": raw.get("ld") or f"{year or ''} {make or ''} {model or ''}".strip(),
+        "year": year,
+        "make": make,
+        "model": model,
+        "damage": damage,
+        "odometer": raw.get("orr") or raw.get("od"),
+        "sale_date": raw.get("ad"),
+        "location": raw.get("yn"),
+        "estimate": raw.get("la") or raw.get("lv"),
+        "image_url": raw.get("tims"),
+        "url": f"https://www.copart.com/lot/{lot_number}/{raw.get('ldu', '')}".rstrip("/"),
+    }
+
+
+def _wait_for_new_lots(intercepted, previous_count, timeout=8):
+    """Wait until new lots appear in intercepted list."""
+    start = time.time()
+    while time.time() - start < timeout:
+        if len(intercepted) > previous_count:
+            return True
+        time.sleep(0.5)
+    return False
+
+
+def search_playwright(makes, damage_types, year_min=None, year_max=None,
+                      max_odometer=None, max_pages=10):
     try:
         from playwright.sync_api import sync_playwright, TimeoutError as PWTimeout
     except ImportError:
@@ -99,7 +129,7 @@ def search_playwright(makes, damage_types, year_min=None, year_max=None, max_odo
                     return
                 if "application/json" not in response.headers.get("content-type", ""):
                     return
-                if "copart.com" not in response.url:
+                if "search-results" not in response.url:
                     return
                 data = response.json()
                 content = (
@@ -128,57 +158,92 @@ def search_playwright(makes, damage_types, year_min=None, year_max=None, max_odo
         try:
             page.goto(url, wait_until="domcontentloaded", timeout=45_000)
         except PWTimeout:
-            logger.warning("domcontentloaded timeout")
+            logger.warning("domcontentloaded timeout — continuing anyway")
 
+        # Wait for first batch of lots
         time.sleep(6)
+        logger.info("Page 1: %d lots intercepted", len(intercepted))
 
-        # Copart uses both pagination buttons AND infinite scroll
-        # Try clicking next page button first, fall back to scroll-based pagination
+        # Paginate by clicking numbered page buttons
         current_page = 1
-        last_count = 0
-
         while current_page < max_pages:
-            # Strategy 1: click next page button
+            previous_count = len(intercepted)
+            next_page_num = current_page + 1
             clicked = False
-            try:
-                next_btn = page.query_selector(
-                    "button[aria-label='Next page']:not([disabled]), "
-                    "a[aria-label='Next page'], "
-                    "li.pagination-next:not(.disabled) a, "
-                    ".next-page:not([disabled]), "
-                    "[data-page='next']",
-                )
-                if next_btn and next_btn.is_visible():
-                    next_btn.click()
-                    clicked = True
-                    logger.info("Clicked next page button (page %d)", current_page + 1)
-            except Exception:
-                pass
 
-            # Strategy 2: scroll to bottom to trigger infinite scroll
+            # Try clicking the next page number button
+            # Copart uses li elements with page numbers inside anchor tags
+            selectors = [
+                f"li.pagination-page a[data-page='{next_page_num}']",
+                f"li[data-page='{next_page_num}'] a",
+                f"a[aria-label='Page {next_page_num}']",
+                f"button[aria-label='Page {next_page_num}']",
+                # Generic: find a pagination element containing just the number
+                f".pagination li:not(.disabled):not(.active) a >> text='{next_page_num}'",
+            ]
+
+            for selector in selectors:
+                try:
+                    btn = page.query_selector(selector)
+                    if btn and btn.is_visible():
+                        btn.click()
+                        clicked = True
+                        logger.info("Clicked page %d button", next_page_num)
+                        break
+                except Exception:
+                    continue
+
+            # Fallback: try JS-based pagination trigger
             if not clicked:
                 try:
-                    page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
-                    logger.info("Scrolled to bottom (page %d)", current_page + 1)
+                    result = page.evaluate(f"""
+                        (() => {{
+                            // Look for angular/react pagination component
+                            const links = document.querySelectorAll('.pagination a, .page-link, [class*="pagination"] a');
+                            for (const l of links) {{
+                                if (l.textContent.trim() === '{next_page_num}') {{
+                                    l.click();
+                                    return 'clicked:' + l.textContent;
+                                }}
+                            }}
+                            return 'not_found';
+                        }})()
+                    """)
+                    if result and result.startswith("clicked"):
+                        clicked = True
+                        logger.info("JS clicked page %d: %s", next_page_num, result)
+                except Exception as e:
+                    logger.debug("JS pagination error: %s", e)
+
+            if not clicked:
+                logger.info("Could not find page %d button — stopping at page %d",
+                            next_page_num, current_page)
+                # Log available pagination elements for debugging
+                try:
+                    pg_html = page.evaluate("""
+                        (() => {
+                            const el = document.querySelector('.pagination, [class*="pagination"]');
+                            return el ? el.outerHTML.substring(0, 500) : 'no pagination found';
+                        })()
+                    """)
+                    logger.info("Pagination HTML: %s", pg_html)
                 except Exception:
                     pass
-
-            time.sleep(4)
-            try:
-                page.wait_for_load_state("networkidle", timeout=10_000)
-            except PWTimeout:
-                pass
-
-            # Check if we got new lots
-            if len(intercepted) == last_count:
-                logger.info("No new lots after page %d — stopping", current_page)
                 break
 
-            last_count = len(intercepted)
+            # Wait for new lots to load
+            got_new = _wait_for_new_lots(intercepted, previous_count, timeout=10)
             current_page += 1
-            logger.info("Page %d: %d total lots intercepted so far", current_page, len(intercepted))
 
-        logger.info("Playwright: scraped %d page(s), intercepted %d total lots", current_page, len(intercepted))
+            if got_new:
+                logger.info("Page %d: %d new lots (total: %d)",
+                            current_page, len(intercepted) - previous_count, len(intercepted))
+            else:
+                logger.info("Page %d: no new lots after click — stopping", current_page)
+                break
+
+        logger.info("Playwright: scraped %d page(s), intercepted %d total lots",
+                    current_page, len(intercepted))
         browser.close()
 
     # Deduplicate by lot number
@@ -192,33 +257,11 @@ def search_playwright(makes, damage_types, year_min=None, year_max=None, max_odo
 
     logger.info("After dedup: %d unique lots", len(unique))
 
-    # Apply filters
-    filtered = [r for r in unique if _matches_filters(r, makes, damage_types, year_min, year_max, max_odometer)]
+    filtered = [r for r in unique if _matches_filters(
+        r, makes, damage_types, year_min, year_max, max_odometer)]
     logger.info("After client-side filter: %d matched", len(filtered))
 
     results = [_parse_lot(raw) for raw in filtered]
     results = [r for r in results if r.get("lot_number")]
     logger.info("Playwright returned %d lots", len(results))
     return results
-
-
-def _parse_lot(raw):
-    lot_number = str(raw.get("ln") or raw.get("lotNumberStr") or "")
-    year  = raw.get("lcy") or raw.get("y") or raw.get("yr")
-    make  = raw.get("mkn") or raw.get("mk")
-    model = raw.get("lm")  or raw.get("mdn") or raw.get("md")
-    damage = raw.get("dd") or raw.get("dmg")
-    return {
-        "lot_number": lot_number,
-        "title": raw.get("ld") or f"{year or ''} {make or ''} {model or ''}".strip(),
-        "year": year,
-        "make": make,
-        "model": model,
-        "damage": damage,
-        "odometer": raw.get("orr") or raw.get("od"),
-        "sale_date": raw.get("ad"),
-        "location": raw.get("yn"),
-        "estimate": raw.get("la") or raw.get("lv"),
-        "image_url": raw.get("tims"),
-        "url": f"https://www.copart.com/lot/{lot_number}/{raw.get('ldu', '')}".rstrip("/"),
-    }
