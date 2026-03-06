@@ -1,7 +1,7 @@
 """
 Copart US API client.
-Uses YEAR filter only (confirmed working) + client-side filtering for everything else.
-Damage/make filtered client-side since server-side field names are unverified for US.
+Payload format confirmed from browser network inspection.
+Uses form-encoded data (not JSON) with filter[KEY] format.
 """
 
 import httpx
@@ -16,7 +16,7 @@ HEADERS = {
     "Accept": "application/json, text/javascript, */*; q=0.01",
     "Accept-Language": "en-US,en;q=0.9",
     "Accept-Encoding": "gzip, deflate, br",
-    "Content-Type": "application/json",
+    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
     "X-Requested-With": "XMLHttpRequest",
     "Connection": "keep-alive",
     "Origin": "https://www.copart.com",
@@ -29,41 +29,80 @@ HEADERS = {
     ),
 }
 
+# Confirmed damage codes from browser payload
+DAMAGE_CODES = {
+    "FRONT END":             "DAMAGECODE_FR",  # confirmed
+    "HAIL":                  "DAMAGECODE_HL",  # confirmed
+    "ALL OVER":              "DAMAGECODE_AO",  # confirmed
+    "MINOR DENT/SCRATCHES":  "DAMAGECODE_MN",  # confirmed
+    "NORMAL WEAR":           "DAMAGECODE_NW",  # confirmed
+    "REAR END":              "DAMAGECODE_RR",  # confirmed
+    "SIDE":                  "DAMAGECODE_SD",  # confirmed
+    "VANDALISM":             "DAMAGECODE_VN",  # confirmed
+    "MECHANICAL":            "DAMAGECODE_MC",
+    "BURN":                  "DAMAGECODE_BU",
+    "WATER/FLOOD":           "DAMAGECODE_WA",
+}
 
-def build_payload(year_min=None, year_max=None, page=0, rows=100):
+
+def build_payload(makes, damage_types, year_min=None, year_max=None,
+                  max_odometer=None, page=0, rows=100):
     """
-    Minimal payload — only YEAR and COUNTRY filters (both confirmed working).
-    Make/damage/odometer are filtered client-side.
+    Build form-encoded payload matching exact Copart browser format.
+    Uses filter[KEY] notation with comma-separated values.
     """
-    filters = {
-        "AUCTION_COUNTRY_CODE": ["auction_country_code:US"],
+    data = {
+        "query": "*",
+        "watchListOnly": "false",
+        "freeFormSearch": "false",
+        "page": str(page),
+        "size": str(rows),
+        "start": str(page * rows),
     }
 
+    # Make filter — confirmed format
+    if makes:
+        make_values = ",".join(f'lot_make_desc:"{m.upper()}"' for m in makes)
+        data["filter[MAKE]"] = make_values
+
+    # Damage filter — confirmed codes
+    if damage_types:
+        prid_parts = []
+        for d in damage_types:
+            code = DAMAGE_CODES.get(d.upper())
+            if code:
+                prid_parts.append(f"damage_type_code:{code}")
+            else:
+                logger.warning("Unknown damage type: %s", d)
+        if prid_parts:
+            data["filter[PRID]"] = ",".join(prid_parts)
+
+    # Odometer — confirmed field name
+    max_odo = max_odometer or 9999999
+    data["filter[ODM]"] = f"odometer_reading_received:[0 TO {max_odo}]"
+
+    # Year — confirmed format
     if year_min and year_max:
-        filters["YEAR"] = [f"lot_year:[{year_min} TO {year_max}]"]
+        data["filter[YEAR]"] = f"lot_year:[{year_min} TO {year_max}]"
     elif year_min:
-        filters["YEAR"] = [f"lot_year:[{year_min} TO *]"]
+        data["filter[YEAR]"] = f"lot_year:[{year_min} TO *]"
     elif year_max:
-        filters["YEAR"] = [f"lot_year:[* TO {year_max}]"]
+        data["filter[YEAR]"] = f"lot_year:[* TO {year_max}]"
 
-    return {
-        "query": ["*"],
-        "filter": filters,
-        "sort": ["auction_date_utc asc"],
-        "page": page,
-        "size": rows,
-        "start": page * rows,
-        "watchListOnly": False,
-        "freeFormSearch": False,
-        "hideImages": False,
-        "defaultSort": False,
-        "specificRowProvided": False,
-        "displayName": "",
-        "searchName": "",
-        "backUrl": "",
-        "includeTagByField": {},
-        "rawParams": {},
-    }
+    # Vehicle type — cars only (confirmed)
+    data["filter[MISC]"] = "#VehicleTypeCode:VEHTYPE_V"
+    data["filter[VEHT]"] = "vehicle_type_code:VEHTYPE_V,veh_cat_code:VEHCAT_S"  # VEHTYPE_V=Automobile, VEHCAT_S=SUV
+
+    # Title type — Salvage and Certificate (confirmed from browser)
+    data["filter[TITL]"] = "title_group_code:TITLEGROUP_S,title_group_code:TITLEGROUP_C"
+
+    # Fuel type — Gas only (confirmed from browser)
+    data["filter[FUEL]"] = 'fuel_type_desc:"GAS"'
+
+    # Transmission — Automatic only (confirmed from browser)
+    data["filter[TMTP]"] = 'transmission_type:"AUTOMATIC"'
+
+    return data
 
 
 def parse_lot(raw):
@@ -130,10 +169,14 @@ def search_api(makes, damage_types, year_min=None, year_max=None,
             logger.warning("Homepage fetch failed: %s", e)
 
         for page in range(max_pages):
-            payload = build_payload(year_min=year_min, year_max=year_max, page=page)
+            payload = build_payload(
+                makes, damage_types,
+                year_min=year_min, year_max=year_max,
+                max_odometer=max_odometer, page=page
+            )
 
             try:
-                resp = client.post(SEARCH_URL, json=payload)
+                resp = client.post(SEARCH_URL, data=payload)
                 logger.info("Search page=%d status=%d", page, resp.status_code)
                 resp.raise_for_status()
             except Exception as e:
@@ -161,7 +204,7 @@ def search_api(makes, damage_types, year_min=None, year_max=None,
                         page, len(content), total_elements, total_pages)
 
             if not content:
-                logger.warning("Empty content on page %d. Response: %s",
+                logger.warning("Empty content page=%d response=%s",
                                page, resp.text[:300])
                 break
 
