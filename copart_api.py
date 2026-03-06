@@ -1,6 +1,5 @@
 """
-Copart API client.
-Uses session cookies from homepage, then calls the correct search endpoint.
+Copart API client — session cookie approach with strict client-side filtering.
 """
 
 import httpx
@@ -8,9 +7,13 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-# Correct Copart search endpoint (v2)
-SEARCH_URL = "https://www.copart.com/public/lots/search"
-HOME_URL   = "https://www.copart.com/"
+HOME_URL = "https://www.copart.com/"
+SEARCH_ENDPOINTS = [
+    "https://www.copart.com/public/lots/search",
+    "https://www.copart.com/public/lots/search/US",
+    "https://api.copart.com/public/lots/search",
+    "https://api.copart.com/public/lots/search/US",
+]
 
 HEADERS = {
     "Accept": "application/json, text/plain, */*",
@@ -30,16 +33,6 @@ HEADERS = {
     "sec-fetch-mode": "cors",
     "sec-fetch-site": "same-origin",
 }
-
-# All known Copart search endpoint variations to try
-SEARCH_ENDPOINTS = [
-    "https://www.copart.com/public/lots/search",
-    "https://www.copart.com/public/lots/search/US",
-    "https://api.copart.com/public/lots/search",
-    "https://api.copart.com/public/lots/search/US",
-    "https://www.copart.com/public/user/lots/search",
-    "https://www.copart.com/public/lots/search/query",
-]
 
 
 def build_payload(makes, damage_types, year_min=None, year_max=None, page=0, rows=100):
@@ -83,17 +76,50 @@ def build_payload(makes, damage_types, year_min=None, year_max=None, page=0, row
 
 def parse_lot(raw):
     lot_number = str(raw.get("lotNumberStr") or raw.get("ln") or "")
+
+    # Year can be in multiple fields depending on endpoint
+    year = (
+        raw.get("y") or raw.get("yr") or raw.get("year")
+        or raw.get("lty") or raw.get("vehicleYear")
+    )
+
+    # Make can be in multiple fields
+    make = (
+        raw.get("mkn") or raw.get("mk") or raw.get("make")
+        or raw.get("makeDesc") or raw.get("mke")
+    )
+
+    # Damage can be in multiple fields
+    damage = (
+        raw.get("dd") or raw.get("dmg") or raw.get("damage")
+        or raw.get("primaryDamage") or raw.get("dmgDesc")
+        or raw.get("pd") or raw.get("pdd")
+    )
+
+    # Odometer
+    odometer = (
+        raw.get("orr") or raw.get("od") or raw.get("odometer")
+        or raw.get("odometerReading") or raw.get("odm")
+    )
+
+    # Log all raw keys on first parse to help debug field names
+    if not hasattr(parse_lot, "_logged_keys"):
+        parse_lot._logged_keys = True
+        logger.info("RAW LOT KEYS: %s", sorted(raw.keys()))
+        logger.info("RAW LOT SAMPLE: year=%s make=%s damage=%s odo=%s",
+            raw.get("y"), raw.get("mkn"), raw.get("dd"), raw.get("orr"))
+
     return {
         "lot_number": lot_number,
         "title": (
             raw.get("ld")
-            or f"{raw.get('y', '')} {raw.get('mkn', '')} {raw.get('mdn', '')}".strip()
+            or f"{year or ''} {make or ''} {raw.get('mdn') or raw.get('md') or ''}".strip()
         ),
-        "year": raw.get("y"),
-        "make": raw.get("mkn") or raw.get("mk"),
-        "model": raw.get("mdn") or raw.get("md"),
-        "damage": raw.get("dd") or raw.get("dmg"),
-        "odometer": raw.get("orr") or raw.get("od"),
+        "year": year,
+        "make": make,
+        "model": raw.get("mdn") or raw.get("md") or raw.get("model"),
+        "damage": damage,
+        "odometer": odometer,
         "sale_date": raw.get("ad") or raw.get("saleDate"),
         "location": raw.get("yn") or raw.get("yardName"),
         "estimate": raw.get("la") or raw.get("lv"),
@@ -103,98 +129,99 @@ def parse_lot(raw):
 
 
 def _passes_filters(lot, makes, damage_types, year_min, year_max, max_odometer):
-    """Strict client-side filter — applied to every lot regardless of API filters."""
+    """Strict client-side filter."""
     # Make
     if makes:
         lot_make = (lot.get("make") or "").upper()
         if not any(m.upper() in lot_make for m in makes):
             return False
+
     # Damage
     if damage_types:
         lot_damage = (lot.get("damage") or "").upper()
         if not any(d.upper() in lot_damage for d in damage_types):
             return False
-    # Year
-    if lot.get("year"):
+
+    # Year — only filter if year is known
+    year = lot.get("year")
+    if year is not None:
         try:
-            y = int(lot["year"])
+            y = int(year)
             if year_min and y < year_min:
                 return False
             if year_max and y > year_max:
                 return False
         except (ValueError, TypeError):
             pass
-    # Odometer
-    if max_odometer and lot.get("odometer"):
+    # If year is None/unknown → keep the lot (don't reject)
+
+    # Odometer — only filter if odometer is known
+    if max_odometer and lot.get("odometer") is not None:
         try:
             odo = int(str(lot["odometer"]).replace(",", "").strip())
             if odo > max_odometer:
                 return False
         except (ValueError, TypeError):
             pass
+
     return True
 
 
+def _extract_content(data):
+    return (
+        data.get("data", {}).get("results", {}).get("content")
+        or data.get("returnObject", {}).get("results", {}).get("content")
+        or data.get("results", {}).get("content")
+        or []
+    )
+
+
+def _extract_total_pages(data):
+    return (
+        data.get("data", {}).get("results", {}).get("totalPages")
+        or data.get("returnObject", {}).get("results", {}).get("totalPages")
+        or data.get("results", {}).get("totalPages")
+        or 1
+    )
+
+
 def _find_working_endpoint(client, payload):
-    """Try each known endpoint and return (url, response_data) for the first that works."""
     for url in SEARCH_ENDPOINTS:
         try:
             resp = client.post(url, json=payload, timeout=15)
-            logger.info("Tried %s → status %d", url, resp.status_code)
+            logger.info("Tried %s → %d", url, resp.status_code)
             if resp.status_code == 200:
                 data = resp.json()
-                content = (
-                    data.get("data", {}).get("results", {}).get("content")
-                    or data.get("returnObject", {}).get("results", {}).get("content")
-                    or data.get("results", {}).get("content")
-                )
+                content = _extract_content(data)
                 if content is not None:
-                    logger.info("✅ Working endpoint found: %s (%d lots)", url, len(content))
+                    logger.info("✅ Working endpoint: %s (%d lots)", url, len(content))
                     return url, data
         except Exception as e:
-            logger.debug("Endpoint %s failed: %s", url, e)
+            logger.debug("Endpoint %s error: %s", url, e)
     return None, None
 
 
 def search_api(makes, damage_types, year_min=None, year_max=None, max_odometer=None, max_pages=3):
-    """Two-step: get session cookies from homepage, then search."""
     results = []
 
     with httpx.Client(headers=HEADERS, timeout=30, follow_redirects=True) as client:
-        # Step 1 — get session cookies
+        # Get session cookies
         try:
             logger.info("Fetching Copart homepage for session cookies...")
-            home_resp = client.get(HOME_URL)
-            logger.info("Homepage: status=%d cookies=%s", home_resp.status_code, list(client.cookies.keys()))
+            home = client.get(HOME_URL)
+            logger.info("Homepage: status=%d cookies=%s", home.status_code, list(client.cookies.keys()))
         except Exception as e:
-            logger.warning("Homepage fetch failed: %s", e)
+            logger.warning("Homepage failed: %s", e)
 
-        # Step 2 — find working endpoint on first page
-        payload = build_payload(makes, damage_types, year_min=year_min, year_max=year_max, page=0)
-        working_url, first_data = _find_working_endpoint(client, payload)
+        # Find working endpoint
+        payload0 = build_payload(makes, damage_types, year_min=year_min, year_max=year_max, page=0)
+        working_url, first_data = _find_working_endpoint(client, payload0)
 
         if not working_url:
             raise RuntimeError("No working Copart API endpoint found")
 
-        # Process first page
-        def extract_content(data):
-            return (
-                data.get("data", {}).get("results", {}).get("content")
-                or data.get("returnObject", {}).get("results", {}).get("content")
-                or data.get("results", {}).get("content")
-                or []
-            )
-
-        def extract_total_pages(data):
-            return (
-                data.get("data", {}).get("results", {}).get("totalPages")
-                or data.get("returnObject", {}).get("results", {}).get("totalPages")
-                or data.get("results", {}).get("totalPages")
-                or 1
-            )
-
-        content = extract_content(first_data)
-        total_pages = extract_total_pages(first_data)
+        content = _extract_content(first_data)
+        total_pages = _extract_total_pages(first_data)
         logger.info("Page 0: %d lots, total_pages=%d", len(content), total_pages)
 
         before = 0
@@ -202,19 +229,21 @@ def search_api(makes, damage_types, year_min=None, year_max=None, max_odometer=N
             lot = parse_lot(raw)
             before += 1
             passed = _passes_filters(lot, makes, damage_types, year_min, year_max, max_odometer)
-            logger.info("LOT %s | make=%-10s | damage=%-25s | year=%s | odo=%s | pass=%s",
-                lot.get("lot_number",""), lot.get("make",""), lot.get("damage",""),
-                lot.get("year",""), lot.get("odometer",""), passed)
+            logger.info(
+                "LOT %s | make=%-12s | damage=%-25s | year=%s | odo=%s | pass=%s",
+                lot.get("lot_number", ""), lot.get("make", ""), lot.get("damage", ""),
+                lot.get("year", "?"), lot.get("odometer", "?"), passed,
+            )
             if passed:
                 results.append(lot)
 
-        # Remaining pages
+        # More pages
         for page in range(1, min(max_pages, total_pages)):
             payload = build_payload(makes, damage_types, year_min=year_min, year_max=year_max, page=page)
             resp = client.post(working_url, json=payload)
             resp.raise_for_status()
             data = resp.json()
-            content = extract_content(data)
+            content = _extract_content(data)
             logger.info("Page %d: %d lots", page, len(content))
             if not content:
                 break
@@ -224,8 +253,11 @@ def search_api(makes, damage_types, year_min=None, year_max=None, max_odometer=N
                 if _passes_filters(lot, makes, damage_types, year_min, year_max, max_odometer):
                     results.append(lot)
 
-        logger.info("Client-side filter: %d fetched → %d matched (makes=%s damage=%s years=%s-%s max_odo=%s)",
-            before, len(results), makes, damage_types, year_min or "*", year_max or "*", max_odometer or "*")
+        logger.info(
+            "Client-side filter: %d fetched → %d matched (makes=%s damage=%s years=%s-%s max_odo=%s)",
+            before, len(results), makes, damage_types,
+            year_min or "*", year_max or "*", max_odometer or "*",
+        )
 
     logger.info("API returned %d lots after filtering", len(results))
     return results
