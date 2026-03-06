@@ -1,7 +1,6 @@
 """
 Copart US API client.
-Payload format confirmed from browser network inspection.
-Uses form-encoded data (not JSON) with filter[KEY] format.
+Sends JSON payload with confirmed field names from browser inspection.
 """
 
 import httpx
@@ -16,7 +15,7 @@ HEADERS = {
     "Accept": "application/json, text/javascript, */*; q=0.01",
     "Accept-Language": "en-US,en;q=0.9",
     "Accept-Encoding": "gzip, deflate, br",
-    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+    "Content-Type": "application/json",
     "X-Requested-With": "XMLHttpRequest",
     "Connection": "keep-alive",
     "Origin": "https://www.copart.com",
@@ -29,80 +28,85 @@ HEADERS = {
     ),
 }
 
-# Confirmed damage codes from browser payload
+# Confirmed damage codes from browser
 DAMAGE_CODES = {
-    "FRONT END":             "DAMAGECODE_FR",  # confirmed
-    "HAIL":                  "DAMAGECODE_HL",  # confirmed
-    "ALL OVER":              "DAMAGECODE_AO",  # confirmed
-    "MINOR DENT/SCRATCHES":  "DAMAGECODE_MN",  # confirmed
-    "NORMAL WEAR":           "DAMAGECODE_NW",  # confirmed
-    "REAR END":              "DAMAGECODE_RR",  # confirmed
-    "SIDE":                  "DAMAGECODE_SD",  # confirmed
-    "VANDALISM":             "DAMAGECODE_VN",  # confirmed
-    "MECHANICAL":            "DAMAGECODE_MC",
-    "BURN":                  "DAMAGECODE_BU",
-    "WATER/FLOOD":           "DAMAGECODE_WA",
+    "FRONT END":            "DAMAGECODE_FR",
+    "HAIL":                 "DAMAGECODE_HL",
+    "ALL OVER":             "DAMAGECODE_AO",
+    "MINOR DENT/SCRATCHES": "DAMAGECODE_MN",
+    "NORMAL WEAR":          "DAMAGECODE_NW",
+    "REAR END":             "DAMAGECODE_RR",
+    "SIDE":                 "DAMAGECODE_SD",
+    "VANDALISM":            "DAMAGECODE_VN",
+    "MECHANICAL":           "DAMAGECODE_MC",
+    "BURN":                 "DAMAGECODE_BU",
+    "WATER/FLOOD":          "DAMAGECODE_WA",
 }
 
 
 def build_payload(makes, damage_types, year_min=None, year_max=None,
                   max_odometer=None, page=0, rows=100):
-    """
-    Build form-encoded payload matching exact Copart browser format.
-    Uses filter[KEY] notation with comma-separated values.
-    """
-    data = {
-        "query": "*",
-        "watchListOnly": "false",
-        "freeFormSearch": "false",
-        "page": str(page),
-        "size": str(rows),
-        "start": str(page * rows),
-    }
+    filters = {}
 
-    # Make filter — confirmed format
+    # Make — confirmed format from browser
     if makes:
-        make_values = ",".join(f'lot_make_desc:"{m.upper()}"' for m in makes)
-        data["filter[MAKE]"] = make_values
+        filters["MAKE"] = [f'lot_make_desc:"{m.upper()}"' for m in makes]
 
-    # Damage filter — confirmed codes
+    # Damage — confirmed codes
     if damage_types:
-        prid_parts = []
+        prid = []
         for d in damage_types:
             code = DAMAGE_CODES.get(d.upper())
             if code:
-                prid_parts.append(f"damage_type_code:{code}")
+                prid.append(f"damage_type_code:{code}")
             else:
                 logger.warning("Unknown damage type: %s", d)
-        if prid_parts:
-            data["filter[PRID]"] = ",".join(prid_parts)
+        if prid:
+            filters["PRID"] = prid
 
     # Odometer — confirmed field name
     max_odo = max_odometer or 9999999
-    data["filter[ODM]"] = f"odometer_reading_received:[0 TO {max_odo}]"
+    filters["ODM"] = [f"odometer_reading_received:[0 TO {max_odo}]"]
 
-    # Year — confirmed format
+    # Year — confirmed
     if year_min and year_max:
-        data["filter[YEAR]"] = f"lot_year:[{year_min} TO {year_max}]"
+        filters["YEAR"] = [f"lot_year:[{year_min} TO {year_max}]"]
     elif year_min:
-        data["filter[YEAR]"] = f"lot_year:[{year_min} TO *]"
+        filters["YEAR"] = [f"lot_year:[{year_min} TO *]"]
     elif year_max:
-        data["filter[YEAR]"] = f"lot_year:[* TO {year_max}]"
+        filters["YEAR"] = [f"lot_year:[* TO {year_max}]"]
 
-    # Vehicle type — cars only (confirmed)
-    data["filter[MISC]"] = "#VehicleTypeCode:VEHTYPE_V"
-    data["filter[VEHT]"] = "vehicle_type_code:VEHTYPE_V,veh_cat_code:VEHCAT_S"  # VEHTYPE_V=Automobile, VEHCAT_S=SUV
+    # Vehicle type — Automobile + SUV (confirmed)
+    filters["MISC"] = ["#VehicleTypeCode:VEHTYPE_V"]
+    filters["VEHT"] = ["vehicle_type_code:VEHTYPE_V", "veh_cat_code:VEHCAT_S"]
 
-    # Title type — Salvage and Certificate (confirmed from browser)
-    data["filter[TITL]"] = "title_group_code:TITLEGROUP_S,title_group_code:TITLEGROUP_C"
+    # Title — Salvage + Certificate (confirmed)
+    filters["TITL"] = ["title_group_code:TITLEGROUP_S", "title_group_code:TITLEGROUP_C"]
 
-    # Fuel type — Gas only (confirmed from browser)
-    data["filter[FUEL]"] = 'fuel_type_desc:"GAS"'
+    # Fuel — Gas (confirmed)
+    filters["FUEL"] = ['fuel_type_desc:"GAS"']
 
-    # Transmission — Automatic only (confirmed from browser)
-    data["filter[TMTP]"] = 'transmission_type:"AUTOMATIC"'
+    # Transmission — Automatic (confirmed)
+    filters["TMTP"] = ['transmission_type:"AUTOMATIC"']
 
-    return data
+    return {
+        "query": ["*"],
+        "filter": filters,
+        "sort": ["relevancy desc", "auction_date_type desc", "auction_date_utc asc"],
+        "page": page,
+        "size": rows,
+        "start": page * rows,
+        "watchListOnly": False,
+        "freeFormSearch": False,
+        "hideImages": False,
+        "defaultSort": False,
+        "specificRowProvided": False,
+        "displayName": "",
+        "searchName": "",
+        "backUrl": "",
+        "includeTagByField": {},
+        "rawParams": {},
+    }
 
 
 def parse_lot(raw):
@@ -176,7 +180,7 @@ def search_api(makes, damage_types, year_min=None, year_max=None,
             )
 
             try:
-                resp = client.post(SEARCH_URL, data=payload)
+                resp = client.post(SEARCH_URL, json=payload)
                 logger.info("Search page=%d status=%d", page, resp.status_code)
                 resp.raise_for_status()
             except Exception as e:
