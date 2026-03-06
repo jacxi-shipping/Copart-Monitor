@@ -28,7 +28,7 @@ logger = logging.getLogger("copart_monitor")
 # ---------------------------------------------------------------------------
 # Local imports
 # ---------------------------------------------------------------------------
-sys.path.insert(0, str(Path(__file__).parent / "src"))
+sys.path.insert(0, str(Path(__file__).parent))
 
 from copart_api import search_api
 from copart_playwright import search_playwright
