@@ -60,6 +60,9 @@ def get_config():
     year_min = int(year_min_raw) if year_min_raw.isdigit() else None
     year_max = int(year_max_raw) if year_max_raw.isdigit() else None
 
+    max_odo_raw = os.environ.get("COPART_MAX_ODOMETER", "").strip().replace(",", "")
+    max_odometer = int(max_odo_raw) if max_odo_raw.isdigit() else None
+
     if not makes and not damage_types:
         logger.warning("No COPART_MAKES or COPART_DAMAGE_TYPES set — will fetch ALL listings")
 
@@ -73,6 +76,7 @@ def get_config():
         "damage_types": damage_types,
         "year_min": year_min,
         "year_max": year_max,
+        "max_odometer": max_odometer,
         "max_pages": int(os.environ.get("COPART_MAX_PAGES", "3")),
         "state_file": Path(os.environ.get("STATE_FILE", "state.json")),
     }
@@ -81,11 +85,11 @@ def get_config():
 # ---------------------------------------------------------------------------
 # Scraping with API-first, Playwright fallback
 # ---------------------------------------------------------------------------
-def fetch_lots(makes, damage_types, year_min, year_max, max_pages):
+def fetch_lots(makes, damage_types, year_min, year_max, max_odometer, max_pages):
     """Try API first; fall back to Playwright on failure or empty results."""
     logger.info(
-        "Attempting Copart API... makes=%s damage=%s years=%s-%s",
-        makes, damage_types, year_min or "*", year_max or "*",
+        "Attempting Copart API... makes=%s damage=%s years=%s-%s max_odo=%s",
+        makes, damage_types, year_min or "*", year_max or "*", max_odometer or "*",
     )
     try:
         lots = search_api(makes, damage_types, year_min=year_min, year_max=year_max, max_pages=max_pages)
@@ -100,7 +104,7 @@ def fetch_lots(makes, damage_types, year_min, year_max, max_pages):
     logger.info("Attempting Playwright scraper...")
     try:
         # Playwright fetches all results then we filter by year client-side
-        lots = search_playwright(makes, damage_types, year_min=year_min, year_max=year_max, max_pages=max_pages)
+        lots = search_playwright(makes, damage_types, year_min=year_min, year_max=year_max, max_odometer=max_odometer, max_pages=max_pages)
         # Apply year filter post-fetch
         if year_min or year_max:
             before = len(lots)
@@ -162,6 +166,7 @@ def main():
         config["damage_types"],
         config["year_min"],
         config["year_max"],
+        config["max_odometer"],
         config["max_pages"],
     )
 
