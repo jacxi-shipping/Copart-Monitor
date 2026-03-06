@@ -180,21 +180,22 @@ def search_playwright(makes, damage_types, year_min=None, year_max=None, max_odo
 
 
 def _parse_lot(raw):
-    lot_number = str(raw.get("lotNumberStr") or raw.get("ln") or "")
+    lot_number = str(raw.get("ln") or raw.get("lotNumberStr") or "")
+    year  = raw.get("lcy") or raw.get("y") or raw.get("yr")
+    make  = raw.get("mkn") or raw.get("mk")
+    model = raw.get("lm")  or raw.get("mdn") or raw.get("md")
+    damage = raw.get("dd") or raw.get("dmg")
     return {
         "lot_number": lot_number,
-        "title": (
-            raw.get("ld")
-            or f"{raw.get('y', '')} {raw.get('mkn', '')} {raw.get('mdn', '')}".strip()
-        ),
-        "year": raw.get("y"),
-        "make": raw.get("mkn") or raw.get("mk"),
-        "model": raw.get("mdn") or raw.get("md"),
-        "damage": raw.get("dd") or raw.get("dmg"),
+        "title": raw.get("ld") or f"{year or ''} {make or ''} {model or ''}".strip(),
+        "year": year,
+        "make": make,
+        "model": model,
+        "damage": damage,
         "odometer": raw.get("orr") or raw.get("od"),
-        "sale_date": raw.get("ad") or raw.get("saleDate"),
-        "location": raw.get("yn") or raw.get("yardName"),
+        "sale_date": raw.get("ad"),
+        "location": raw.get("yn"),
         "estimate": raw.get("la") or raw.get("lv"),
-        "image_url": raw.get("tims") or raw.get("imgUrl"),
-        "url": f"https://www.copart.com/lot/{lot_number}",
+        "image_url": raw.get("tims"),
+        "url": f"https://www.copart.com/lot/{lot_number}/{raw.get('ldu','')}".rstrip("/"),
     }
