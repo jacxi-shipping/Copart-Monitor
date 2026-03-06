@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 SEARCH_URL = "https://www.copart.com/lotSearchResults/"
 
 
-def _build_search_url(makes: list[str], damage_types: list[str]) -> str:
+def _build_search_url(makes, damage_types):
     """Build Copart search URL — navigating here triggers the real API calls."""
     from urllib.parse import quote
     query_parts = []
@@ -26,11 +26,36 @@ def _build_search_url(makes: list[str], damage_types: list[str]) -> str:
     return f"{SEARCH_URL}?{query}" if query else SEARCH_URL
 
 
-def search_playwright(
-    makes: list[str],
-    damage_types: list[str],
-    max_pages: int = 3,
-) -> list[dict]:
+def _matches_filters(raw, makes, damage_types, year_min=None, year_max=None):
+    """Check if a raw lot matches the requested filters."""
+    # Make filter
+    if makes:
+        lot_make = (raw.get("mkn") or raw.get("mk") or "").upper()
+        if not any(m.upper() in lot_make for m in makes):
+            return False
+
+    # Damage filter
+    if damage_types:
+        lot_damage = (raw.get("dd") or raw.get("dmg") or "").upper()
+        if not any(d.upper() in lot_damage for d in damage_types):
+            return False
+
+    # Year filter
+    lot_year = raw.get("y")
+    if lot_year:
+        try:
+            y = int(lot_year)
+            if year_min and y < year_min:
+                return False
+            if year_max and y > year_max:
+                return False
+        except (ValueError, TypeError):
+            pass
+
+    return True
+
+
+def search_playwright(makes, damage_types, year_min=None, year_max=None, max_pages=3):
     """
     Open Copart in headless Chromium and intercept the internal
     search API responses — much more reliable than DOM scraping.
@@ -76,9 +101,8 @@ def search_playwright(
                 ct = response.headers.get("content-type", "")
                 if "application/json" not in ct:
                     return
-                # Match any Copart API endpoint that might return lot data
-                url = response.url
-                if not any(k in url for k in ["search", "lot", "result", "copart.com"]):
+                resp_url = response.url
+                if not any(k in resp_url for k in ["search", "lot", "result", "copart.com"]):
                     return
                 data = response.json()
                 # Try multiple response shapes
@@ -89,7 +113,7 @@ def search_playwright(
                     or []
                 )
                 if content:
-                    logger.info("Intercepted %d lots from: %s", len(content), url)
+                    logger.info("Intercepted %d lots from: %s", len(content), resp_url)
                     intercepted.extend(content)
             except Exception as e:
                 logger.debug("Response intercept error: %s", e)
@@ -102,10 +126,8 @@ def search_playwright(
         except PWTimeout:
             logger.warning("networkidle timeout — checking what loaded")
 
-        # Give JS time to fire search requests
         time.sleep(5)
 
-        # Log page title to help debug what loaded
         try:
             logger.info("Page title: %s", page.title())
             logger.info("Page URL after load: %s", page.url)
@@ -135,13 +157,24 @@ def search_playwright(
 
         browser.close()
 
-    results = [_parse_lot(raw) for raw in intercepted]
+    # Apply strict client-side filtering to remove non-matching lots
+    before = len(intercepted)
+    filtered = [
+        raw for raw in intercepted
+        if _matches_filters(raw, makes, damage_types, year_min, year_max)
+    ]
+    logger.info(
+        "Client-side filter: %d intercepted → %d matched (makes=%s, damage=%s, years=%s-%s)",
+        before, len(filtered), makes, damage_types, year_min or "*", year_max or "*",
+    )
+
+    results = [_parse_lot(raw) for raw in filtered]
     results = [r for r in results if r.get("lot_number")]
     logger.info("Playwright returned %d lots", len(results))
     return results
 
 
-def _parse_lot(raw: dict) -> dict:
+def _parse_lot(raw):
     """Normalize a raw Copart lot dict."""
     lot_number = str(raw.get("lotNumberStr") or raw.get("ln") or "")
     return {
