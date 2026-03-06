@@ -1,7 +1,6 @@
 """
-Copart API client — uses a two-step approach:
-1. First visits copart.com to get session cookies
-2. Then calls the search API with those cookies
+Copart API client.
+Uses session cookies from homepage, then calls the correct search endpoint.
 """
 
 import httpx
@@ -9,7 +8,8 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-SEARCH_URL = "https://www.copart.com/public/lots/search/US"
+# Correct Copart search endpoint (v2)
+SEARCH_URL = "https://www.copart.com/public/lots/search"
 HOME_URL   = "https://www.copart.com/"
 
 HEADERS = {
@@ -31,10 +31,19 @@ HEADERS = {
     "sec-fetch-site": "same-origin",
 }
 
+# All known Copart search endpoint variations to try
+SEARCH_ENDPOINTS = [
+    "https://www.copart.com/public/lots/search",
+    "https://www.copart.com/public/lots/search/US",
+    "https://api.copart.com/public/lots/search",
+    "https://api.copart.com/public/lots/search/US",
+    "https://www.copart.com/public/user/lots/search",
+    "https://www.copart.com/public/lots/search/query",
+]
 
-def build_payload(makes, damage_types, year_min=None, year_max=None, max_odometer=None, page=0, rows=100):
+
+def build_payload(makes, damage_types, year_min=None, year_max=None, page=0, rows=100):
     filter_list = []
-
     if makes:
         filter_list.append({
             "displayName": "Make",
@@ -93,8 +102,7 @@ def parse_lot(raw):
     }
 
 
-def _passes_filters(lot, max_odometer):
-    """Post-fetch client-side odometer filter."""
+def _passes_odometer(lot, max_odometer):
     if max_odometer and lot.get("odometer"):
         try:
             odo = int(str(lot["odometer"]).replace(",", "").strip())
@@ -105,60 +113,87 @@ def _passes_filters(lot, max_odometer):
     return True
 
 
+def _find_working_endpoint(client, payload):
+    """Try each known endpoint and return (url, response_data) for the first that works."""
+    for url in SEARCH_ENDPOINTS:
+        try:
+            resp = client.post(url, json=payload, timeout=15)
+            logger.info("Tried %s → status %d", url, resp.status_code)
+            if resp.status_code == 200:
+                data = resp.json()
+                content = (
+                    data.get("data", {}).get("results", {}).get("content")
+                    or data.get("returnObject", {}).get("results", {}).get("content")
+                    or data.get("results", {}).get("content")
+                )
+                if content is not None:
+                    logger.info("✅ Working endpoint found: %s (%d lots)", url, len(content))
+                    return url, data
+        except Exception as e:
+            logger.debug("Endpoint %s failed: %s", url, e)
+    return None, None
+
+
 def search_api(makes, damage_types, year_min=None, year_max=None, max_odometer=None, max_pages=3):
-    """
-    Two-step: visit homepage to get cookies, then call search API.
-    """
+    """Two-step: get session cookies from homepage, then search."""
     results = []
 
-    with httpx.Client(
-        headers=HEADERS,
-        timeout=30,
-        follow_redirects=True,
-    ) as client:
-        # Step 1 — get session cookies by visiting homepage
+    with httpx.Client(headers=HEADERS, timeout=30, follow_redirects=True) as client:
+        # Step 1 — get session cookies
         try:
             logger.info("Fetching Copart homepage for session cookies...")
             home_resp = client.get(HOME_URL)
-            logger.info("Homepage status: %d, cookies: %s", home_resp.status_code, list(client.cookies.keys()))
+            logger.info("Homepage: status=%d cookies=%s", home_resp.status_code, list(client.cookies.keys()))
         except Exception as e:
             logger.warning("Homepage fetch failed: %s", e)
 
-        # Step 2 — call search API with session cookies
-        for page in range(max_pages):
-            payload = build_payload(
-                makes, damage_types,
-                year_min=year_min, year_max=year_max,
-                page=page,
+        # Step 2 — find working endpoint on first page
+        payload = build_payload(makes, damage_types, year_min=year_min, year_max=year_max, page=0)
+        working_url, first_data = _find_working_endpoint(client, payload)
+
+        if not working_url:
+            raise RuntimeError("No working Copart API endpoint found")
+
+        # Process first page
+        def extract_content(data):
+            return (
+                data.get("data", {}).get("results", {}).get("content")
+                or data.get("returnObject", {}).get("results", {}).get("content")
+                or data.get("results", {}).get("content")
+                or []
             )
 
-            resp = client.post(SEARCH_URL, json=payload)
-            logger.info("Search API page=%d status=%d", page, resp.status_code)
+        def extract_total_pages(data):
+            return (
+                data.get("data", {}).get("results", {}).get("totalPages")
+                or data.get("returnObject", {}).get("results", {}).get("totalPages")
+                or data.get("results", {}).get("totalPages")
+                or 1
+            )
+
+        content = extract_content(first_data)
+        total_pages = extract_total_pages(first_data)
+        logger.info("Page 0: %d lots, total_pages=%d", len(content), total_pages)
+
+        for raw in content:
+            lot = parse_lot(raw)
+            if _passes_odometer(lot, max_odometer):
+                results.append(lot)
+
+        # Remaining pages
+        for page in range(1, min(max_pages, total_pages)):
+            payload = build_payload(makes, damage_types, year_min=year_min, year_max=year_max, page=page)
+            resp = client.post(working_url, json=payload)
             resp.raise_for_status()
-
             data = resp.json()
-            content = (
-                data.get("data", {})
-                    .get("results", {})
-                    .get("content", [])
-            )
+            content = extract_content(data)
+            logger.info("Page %d: %d lots", page, len(content))
             if not content:
-                logger.info("No more results at page %d", page)
                 break
-
             for raw in content:
                 lot = parse_lot(raw)
-                if _passes_filters(lot, max_odometer):
+                if _passes_odometer(lot, max_odometer):
                     results.append(lot)
-
-            total_pages = (
-                data.get("data", {})
-                    .get("results", {})
-                    .get("totalPages", 1)
-            )
-            logger.info("Page %d: got %d lots, total_pages=%d", page, len(content), total_pages)
-            if page + 1 >= total_pages:
-                break
 
     logger.info("API returned %d lots after filtering", len(results))
     return results
