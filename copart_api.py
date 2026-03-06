@@ -6,7 +6,6 @@ Reverse-engineered from Copart's web app network traffic.
 import httpx
 import json
 import logging
-from typing import Optional
 
 logger = logging.getLogger(__name__)
 
@@ -26,11 +25,13 @@ HEADERS = {
 
 
 def build_search_payload(
-    makes: list[str],
-    damage_types: list[str],
-    page: int = 0,
-    rows: int = 100,
-) -> dict:
+    makes,
+    damage_types,
+    year_min=None,
+    year_max=None,
+    page=0,
+    rows=100,
+):
     """Build the POST body for Copart's search endpoint."""
     filter_list = []
 
@@ -48,7 +49,7 @@ def build_search_payload(
             "values": [d.upper() for d in damage_types],
         })
 
-    return {
+    payload = {
         "query": ["*"],
         "filter": {
             "SALE_STATUS": ["On Time, Sold"],
@@ -63,8 +64,17 @@ def build_search_payload(
         "defaultSort": False,
     }
 
+    # Year range filter
+    if year_min is not None or year_max is not None:
+        payload["filter"]["YEAR"] = {
+            "from": str(year_min) if year_min else "*",
+            "to": str(year_max) if year_max else "*",
+        }
 
-def parse_lot(raw: dict) -> dict:
+    return payload
+
+
+def parse_lot(raw):
     """Normalize a raw Copart lot into a clean dict."""
     return {
         "lot_number": str(raw.get("lotNumberStr") or raw.get("ln") or ""),
@@ -82,11 +92,7 @@ def parse_lot(raw: dict) -> dict:
     }
 
 
-def search_api(
-    makes: list[str],
-    damage_types: list[str],
-    max_pages: int = 3,
-) -> list[dict]:
+def search_api(makes, damage_types, year_min=None, year_max=None, max_pages=3):
     """
     Query Copart's unofficial API.
     Returns a list of normalized lot dicts, or raises on failure.
@@ -94,14 +100,17 @@ def search_api(
     results = []
     with httpx.Client(headers=HEADERS, timeout=30, follow_redirects=True) as client:
         for page in range(max_pages):
-            payload = build_search_payload(makes, damage_types, page=page)
-            logger.debug("API request page=%d payload=%s", page, json.dumps(payload))
+            payload = build_search_payload(
+                makes, damage_types,
+                year_min=year_min, year_max=year_max,
+                page=page,
+            )
+            logger.debug("API request page=%d", page)
 
             resp = client.post(BASE_URL, json=payload)
             resp.raise_for_status()
 
             data = resp.json()
-            # Response shape: {"data": {"results": {"content": [...]}}}
             content = (
                 data.get("data", {})
                     .get("results", {})
