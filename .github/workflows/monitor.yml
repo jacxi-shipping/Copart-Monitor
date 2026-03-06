@@ -66,6 +66,7 @@ jobs:
           COPART_MAX_PAGES: ${{ vars.COPART_MAX_PAGES || '3' }}
           COPART_YEAR_MIN: ${{ vars.COPART_YEAR_MIN }}
           COPART_YEAR_MAX: ${{ vars.COPART_YEAR_MAX }}
+          COPART_MAX_ODOMETER: ${{ vars.COPART_MAX_ODOMETER }}
         run: |
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
             python monitor.py --dry-run
