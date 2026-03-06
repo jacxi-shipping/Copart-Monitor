@@ -160,64 +160,35 @@ def search_playwright(makes, damage_types, year_min=None, year_max=None,
         except PWTimeout:
             logger.warning("domcontentloaded timeout — continuing anyway")
 
-        # Wait for page to fully render including pagination
-        time.sleep(8)
+        # Wait for first page lots to arrive
+        _wait_for_new_lots(intercepted, 0, timeout=10)
+        time.sleep(2)
         logger.info("Page 1: %d lots intercepted", len(intercepted))
 
-        # Dump full page DOM snapshot to find pagination structure
-        try:
-            dom_snapshot = page.evaluate("""
-                (() => {
-                    // Find ALL elements that might be pagination
-                    const candidates = document.querySelectorAll(
-                        '[class*="page"], [class*="pagination"], [class*="pager"], '
-                        + 'ul li a, .ng-scope a'
-                    );
-                    const results = [];
-                    for (const el of candidates) {
-                        const txt = el.textContent.trim();
-                        if (txt.match(/^[0-9]+$/) || txt === 'Next' || txt === '>' || txt === '>>') {
-                            results.push({
-                                tag: el.tagName,
-                                cls: el.className,
-                                txt: txt,
-                                parent: el.parentElement ? el.parentElement.className : ''
-                            });
-                        }
-                    }
-                    return JSON.stringify(results.slice(0, 20));
-                })()
-            """)
-            logger.info("Pagination candidates: %s", dom_snapshot)
-        except Exception as e:
-            logger.info("DOM snapshot error: %s", e)
-
-        # Paginate by clicking numbered page buttons
+        # Paginate using PrimeNG p-paginator-page buttons (confirmed structure)
+        # Button selector: button.p-paginator-page with text matching page number
         current_page = 1
         while current_page < max_pages:
             previous_count = len(intercepted)
             next_page_num = current_page + 1
             clicked = False
 
-            # Broad JS search for any clickable element with the next page number
             try:
                 result = page.evaluate(f"""
                     (() => {{
-                        const all = document.querySelectorAll('a, button, li, span');
-                        for (const el of all) {{
-                            const txt = el.textContent.trim();
-                            if (txt === '{next_page_num}' && el.offsetParent !== null) {{
-                                el.click();
-                                return 'clicked:' + el.tagName + ':' + el.className;
+                        // PrimeNG paginator buttons confirmed from DOM snapshot
+                        const btns = document.querySelectorAll('button.p-paginator-page');
+                        for (const btn of btns) {{
+                            if (btn.textContent.trim() === '{next_page_num}' && !btn.disabled) {{
+                                btn.click();
+                                return 'clicked:' + btn.className;
                             }}
                         }}
-                        // Also try next/arrow buttons
-                        const arrows = document.querySelectorAll('[aria-label*="next" i], [aria-label*="Next" i], .next a, li.next a');
-                        for (const el of arrows) {{
-                            if (el.offsetParent !== null && !el.disabled) {{
-                                el.click();
-                                return 'clicked-next:' + el.tagName + ':' + el.className;
-                            }}
+                        // Also try p-paginator-next (arrow button)
+                        const next = document.querySelector('button.p-paginator-next:not([disabled])');
+                        if (next) {{
+                            next.click();
+                            return 'clicked-next:' + next.className;
                         }}
                         return 'not_found';
                     }})()
@@ -226,15 +197,15 @@ def search_playwright(makes, damage_types, year_min=None, year_max=None,
                     clicked = True
                     logger.info("Clicked page %d: %s", next_page_num, result)
                 else:
-                    logger.info("Page %d not found in DOM (%s) — stopping", next_page_num, result)
+                    logger.info("No more pages after page %d (%s)", current_page, result)
             except Exception as e:
                 logger.debug("JS pagination error: %s", e)
 
             if not clicked:
                 break
 
-            # Wait for new lots to load
-            got_new = _wait_for_new_lots(intercepted, previous_count, timeout=10)
+            # Wait for new lots to arrive from this page
+            got_new = _wait_for_new_lots(intercepted, previous_count, timeout=12)
             current_page += 1
 
             if got_new:
