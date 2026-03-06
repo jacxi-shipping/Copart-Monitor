@@ -163,15 +163,24 @@ def search_playwright(makes, damage_types, year_min=None, year_max=None, max_odo
 
         browser.close()
 
+    # Debug: log first lot's raw keys and values
+    if intercepted:
+        sample = intercepted[0]
+        logger.info("SAMPLE RAW KEYS: %s", sorted(sample.keys()))
+        logger.info("SAMPLE VALUES: lcy=%s mkn=%s dd=%s orr=%s ln=%s",
+            sample.get("lcy"), sample.get("mkn"), sample.get("dd"),
+            sample.get("orr"), sample.get("ln"))
+
     before = len(intercepted)
-    filtered = [
-        raw for raw in intercepted
-        if _matches_filters(raw, makes, damage_types, year_min, year_max, max_odometer)
-    ]
-    logger.info(
-        "Client-side filter: %d intercepted → %d matched",
-        before, len(filtered),
-    )
+    filtered = []
+    for raw in intercepted:
+        passed = _matches_filters(raw, makes, damage_types, year_min, year_max, max_odometer)
+        logger.info("LOT %s | make=%-12s | damage=%-25s | year=%s | odo=%s | pass=%s",
+            raw.get("ln", ""), raw.get("mkn", ""), raw.get("dd", ""),
+            raw.get("lcy", "?"), raw.get("orr", "?"), passed)
+        if passed:
+            filtered.append(raw)
+    logger.info("Client-side filter: %d intercepted → %d matched", before, len(filtered))
 
     results = [_parse_lot(raw) for raw in filtered]
     results = [r for r in results if r.get("lot_number")]
