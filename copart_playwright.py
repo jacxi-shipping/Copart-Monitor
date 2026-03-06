@@ -14,11 +14,14 @@ SEARCH_URL = "https://www.copart.com/lotSearchResults/"
 
 def _build_search_url(makes: list[str], damage_types: list[str]) -> str:
     """Build Copart search URL — navigating here triggers the real API calls."""
+    from urllib.parse import quote
     query_parts = []
     if makes:
-        query_parts.append(f"makeList={','.join(m.upper() for m in makes)}")
+        encoded = quote(",".join(m.upper() for m in makes), safe=",")
+        query_parts.append(f"makeList={encoded}")
     if damage_types:
-        query_parts.append(f"damageList={','.join(d.upper() for d in damage_types)}")
+        encoded = quote(",".join(d.upper() for d in damage_types), safe=",")
+        query_parts.append(f"damageList={encoded}")
     query = "&".join(query_parts)
     return f"{SEARCH_URL}?{query}" if query else SEARCH_URL
 
@@ -68,20 +71,26 @@ def search_playwright(
         # Intercept Copart's internal search API responses
         def handle_response(response):
             try:
-                if (
-                    "search" in response.url
-                    and response.status == 200
-                    and "application/json" in response.headers.get("content-type", "")
-                ):
-                    data = response.json()
-                    content = (
-                        data.get("data", {})
-                            .get("results", {})
-                            .get("content", [])
-                    )
-                    if content:
-                        logger.info("Intercepted %d lots from: %s", len(content), response.url)
-                        intercepted.extend(content)
+                if response.status != 200:
+                    return
+                ct = response.headers.get("content-type", "")
+                if "application/json" not in ct:
+                    return
+                # Match any Copart API endpoint that might return lot data
+                url = response.url
+                if not any(k in url for k in ["search", "lot", "result", "copart.com"]):
+                    return
+                data = response.json()
+                # Try multiple response shapes
+                content = (
+                    data.get("data", {}).get("results", {}).get("content")
+                    or data.get("returnObject", {}).get("results", {}).get("content")
+                    or data.get("results", {}).get("content")
+                    or []
+                )
+                if content:
+                    logger.info("Intercepted %d lots from: %s", len(content), url)
+                    intercepted.extend(content)
             except Exception as e:
                 logger.debug("Response intercept error: %s", e)
 
@@ -94,7 +103,14 @@ def search_playwright(
             logger.warning("networkidle timeout — checking what loaded")
 
         # Give JS time to fire search requests
-        time.sleep(3)
+        time.sleep(5)
+
+        # Log page title to help debug what loaded
+        try:
+            logger.info("Page title: %s", page.title())
+            logger.info("Page URL after load: %s", page.url)
+        except Exception:
+            pass
 
         # Paginate if we got results and need more
         if intercepted and max_pages > 1:
