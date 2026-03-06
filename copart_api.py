@@ -115,6 +115,7 @@ def parse_lot(raw):
     make  = raw.get("mkn") or raw.get("mk")
     model = raw.get("lm")  or raw.get("mdn") or raw.get("md")
     damage = raw.get("dd") or raw.get("dmg")
+    secondary_damage = raw.get("sdd") or raw.get("sd") or ""
     return {
         "lot_number": lot_number,
         "title": raw.get("ld") or f"{year or ''} {make or ''} {model or ''}".strip(),
@@ -122,6 +123,7 @@ def parse_lot(raw):
         "make": make,
         "model": model,
         "damage": damage,
+        "secondary_damage": secondary_damage,
         "odometer": raw.get("orr") or raw.get("od"),
         "sale_date": raw.get("ad"),
         "location": raw.get("yn"),
@@ -131,7 +133,16 @@ def parse_lot(raw):
     }
 
 
+# Secondary damage values that indicate airbag deployment — exclude these
+AIRBAG_EXCLUSIONS = {"DEPLOYED AIRBAGS", "BIOHAZARD", "BURN", "STRIPPED"}
+
+
 def _passes_filters(lot, makes, damage_types, year_min, year_max, max_odometer):
+    # Exclude lots with airbag deployment or other high-risk secondary damage
+    secondary = (lot.get("secondary_damage") or "").upper()
+    if secondary and any(excl in secondary for excl in AIRBAG_EXCLUSIONS):
+        return False
+
     if makes:
         lot_make = (lot.get("make") or "").upper()
         if not any(m.upper() in lot_make for m in makes):
