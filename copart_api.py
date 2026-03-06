@@ -172,11 +172,12 @@ def search_api(makes, damage_types, year_min=None, year_max=None,
         except Exception as e:
             logger.warning("Homepage fetch failed: %s", e)
 
+        rows = 100
         for page in range(max_pages):
             payload = build_payload(
                 makes, damage_types,
                 year_min=year_min, year_max=year_max,
-                max_odometer=max_odometer, page=page
+                max_odometer=max_odometer, page=page, rows=rows
             )
 
             try:
@@ -226,8 +227,15 @@ def search_api(makes, damage_types, year_min=None, year_max=None,
             logger.info("Page %d: %d passed filters (running total: %d)",
                         page, len(results) - before, len(results))
 
-            if page + 1 >= total_pages:
-                logger.info("Reached last page (%d)", total_pages)
+            # Copart sometimes returns totalPages=1 even with many results
+            # Calculate real total pages from totalElements
+            real_total_pages = max(total_pages, -(-total_elements // rows))  # ceiling division
+            if real_total_pages != total_pages:
+                logger.info("Corrected totalPages: %d -> %d (based on %d elements)",
+                            total_pages, real_total_pages, total_elements)
+
+            if page + 1 >= real_total_pages:
+                logger.info("Reached last page (%d)", real_total_pages)
                 break
 
     logger.info("API returned %d lots total", len(results))
