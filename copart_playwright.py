@@ -160,9 +160,37 @@ def search_playwright(makes, damage_types, year_min=None, year_max=None,
         except PWTimeout:
             logger.warning("domcontentloaded timeout — continuing anyway")
 
-        # Wait for first batch of lots
-        time.sleep(6)
+        # Wait for page to fully render including pagination
+        time.sleep(8)
         logger.info("Page 1: %d lots intercepted", len(intercepted))
+
+        # Dump full page DOM snapshot to find pagination structure
+        try:
+            dom_snapshot = page.evaluate("""
+                (() => {
+                    // Find ALL elements that might be pagination
+                    const candidates = document.querySelectorAll(
+                        '[class*="page"], [class*="pagination"], [class*="pager"], '
+                        + 'ul li a, .ng-scope a'
+                    );
+                    const results = [];
+                    for (const el of candidates) {
+                        const txt = el.textContent.trim();
+                        if (txt.match(/^[0-9]+$/) || txt === 'Next' || txt === '>' || txt === '>>') {
+                            results.push({
+                                tag: el.tagName,
+                                cls: el.className,
+                                txt: txt,
+                                parent: el.parentElement ? el.parentElement.className : ''
+                            });
+                        }
+                    }
+                    return JSON.stringify(results.slice(0, 20));
+                })()
+            """)
+            logger.info("Pagination candidates: %s", dom_snapshot)
+        except Exception as e:
+            logger.info("DOM snapshot error: %s", e)
 
         # Paginate by clicking numbered page buttons
         current_page = 1
@@ -171,64 +199,38 @@ def search_playwright(makes, damage_types, year_min=None, year_max=None,
             next_page_num = current_page + 1
             clicked = False
 
-            # Try clicking the next page number button
-            # Copart uses li elements with page numbers inside anchor tags
-            selectors = [
-                f"li.pagination-page a[data-page='{next_page_num}']",
-                f"li[data-page='{next_page_num}'] a",
-                f"a[aria-label='Page {next_page_num}']",
-                f"button[aria-label='Page {next_page_num}']",
-                # Generic: find a pagination element containing just the number
-                f".pagination li:not(.disabled):not(.active) a >> text='{next_page_num}'",
-            ]
-
-            for selector in selectors:
-                try:
-                    btn = page.query_selector(selector)
-                    if btn and btn.is_visible():
-                        btn.click()
-                        clicked = True
-                        logger.info("Clicked page %d button", next_page_num)
-                        break
-                except Exception:
-                    continue
-
-            # Fallback: try JS-based pagination trigger
-            if not clicked:
-                try:
-                    result = page.evaluate(f"""
-                        (() => {{
-                            // Look for angular/react pagination component
-                            const links = document.querySelectorAll('.pagination a, .page-link, [class*="pagination"] a');
-                            for (const l of links) {{
-                                if (l.textContent.trim() === '{next_page_num}') {{
-                                    l.click();
-                                    return 'clicked:' + l.textContent;
-                                }}
+            # Broad JS search for any clickable element with the next page number
+            try:
+                result = page.evaluate(f"""
+                    (() => {{
+                        const all = document.querySelectorAll('a, button, li, span');
+                        for (const el of all) {{
+                            const txt = el.textContent.trim();
+                            if (txt === '{next_page_num}' && el.offsetParent !== null) {{
+                                el.click();
+                                return 'clicked:' + el.tagName + ':' + el.className;
                             }}
-                            return 'not_found';
-                        }})()
-                    """)
-                    if result and result.startswith("clicked"):
-                        clicked = True
-                        logger.info("JS clicked page %d: %s", next_page_num, result)
-                except Exception as e:
-                    logger.debug("JS pagination error: %s", e)
+                        }}
+                        // Also try next/arrow buttons
+                        const arrows = document.querySelectorAll('[aria-label*="next" i], [aria-label*="Next" i], .next a, li.next a');
+                        for (const el of arrows) {{
+                            if (el.offsetParent !== null && !el.disabled) {{
+                                el.click();
+                                return 'clicked-next:' + el.tagName + ':' + el.className;
+                            }}
+                        }}
+                        return 'not_found';
+                    }})()
+                """)
+                if result and result.startswith("clicked"):
+                    clicked = True
+                    logger.info("Clicked page %d: %s", next_page_num, result)
+                else:
+                    logger.info("Page %d not found in DOM (%s) — stopping", next_page_num, result)
+            except Exception as e:
+                logger.debug("JS pagination error: %s", e)
 
             if not clicked:
-                logger.info("Could not find page %d button — stopping at page %d",
-                            next_page_num, current_page)
-                # Log available pagination elements for debugging
-                try:
-                    pg_html = page.evaluate("""
-                        (() => {
-                            const el = document.querySelector('.pagination, [class*="pagination"]');
-                            return el ? el.outerHTML.substring(0, 500) : 'no pagination found';
-                        })()
-                    """)
-                    logger.info("Pagination HTML: %s", pg_html)
-                except Exception:
-                    pass
                 break
 
             # Wait for new lots to load
