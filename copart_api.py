@@ -1,6 +1,7 @@
 """
 Copart US API client.
-Sends JSON payload with confirmed field names from browser inspection.
+All vehicle criteria (makes, models) are passed in from environment variables.
+NLR flag is tracked per-lot so Telegram can label them distinctly.
 """
 
 import httpx
@@ -28,7 +29,7 @@ HEADERS = {
     ),
 }
 
-# Confirmed damage codes from browser
+# Confirmed damage codes
 DAMAGE_CODES = {
     "FRONT END":            "DAMAGECODE_FR",
     "HAIL":                 "DAMAGECODE_HL",
@@ -38,37 +39,44 @@ DAMAGE_CODES = {
     "REAR END":             "DAMAGECODE_RR",
     "SIDE":                 "DAMAGECODE_SD",
     "VANDALISM":            "DAMAGECODE_VN",
-    "MECHANICAL":           "DAMAGECODE_MC",
-    "BURN":                 "DAMAGECODE_BU",
-    "WATER/FLOOD":          "DAMAGECODE_WA",
 }
 
+# Secondary damage values to exclude
+AIRBAG_EXCLUSIONS = {"DEPLOYED AIRBAGS", "BIOHAZARD", "BURN", "STRIPPED"}
 
-def build_payload(makes, damage_types, year_min=None, year_max=None,
-                  max_odometer=None, page=0, rows=100):
+
+def build_payload(makes, models, damage_types, year_min=None, year_max=None,
+                  max_odometer=None, nlr_only=False, page=0, rows=100):
+    """
+    Build the Copart search payload.
+    nlr_only=True  → add FETI/MISC filter (No License Required only)
+    nlr_only=False → no license filter (all lots)
+    """
     filters = {}
 
-    # Make — confirmed format from browser
+    # Makes
     if makes:
         filters["MAKE"] = [f'lot_make_desc:"{m.upper()}"' for m in makes]
 
-    # Damage — confirmed codes
+    # Models — passed in from env (e.g. RAV4, RAV4 HYBRID, SONATA …)
+    if models:
+        filters["MODL"] = [f'lot_model_desc:"{m.upper()}"' for m in models]
+
+    # Damage
     if damage_types:
         prid = []
         for d in damage_types:
             code = DAMAGE_CODES.get(d.upper())
             if code:
                 prid.append(f"damage_type_code:{code}")
-            else:
-                logger.warning("Unknown damage type: %s", d)
         if prid:
             filters["PRID"] = prid
 
-    # Odometer — confirmed field name
+    # Odometer
     max_odo = max_odometer or 9999999
     filters["ODM"] = [f"odometer_reading_received:[0 TO {max_odo}]"]
 
-    # Year — confirmed
+    # Year
     if year_min and year_max:
         filters["YEAR"] = [f"lot_year:[{year_min} TO {year_max}]"]
     elif year_min:
@@ -76,20 +84,12 @@ def build_payload(makes, damage_types, year_min=None, year_max=None,
     elif year_max:
         filters["YEAR"] = [f"lot_year:[* TO {year_max}]"]
 
-    # Vehicle type — Automobile + SUV (confirmed)
-    filters["MISC"] = ["#VehicleTypeCode:VEHTYPE_V"]
-    filters["VEHT"] = ["vehicle_type_code:VEHTYPE_V", "veh_cat_code:VEHCAT_S"]
+    # No License Required filter — only applied when nlr_only=True
+    if nlr_only:
+        filters["FETI"] = ["lot_features_code:LOTFEATURE_0"]
+        filters["MISC"] = ["lot_features_code:LOTFEATURE_0"]
 
-    # Title — Salvage + Certificate (confirmed)
-    filters["TITL"] = ["title_group_code:TITLEGROUP_S", "title_group_code:TITLEGROUP_C"]
-
-    # Fuel — Gas (confirmed)
-    filters["FUEL"] = ['fuel_type_desc:"GAS"']
-
-    # Transmission — Automatic (confirmed)
-    filters["TMTP"] = ['transmission_type:"AUTOMATIC"']
-
-    return {
+    payload = {
         "query": ["*"],
         "filter": filters,
         "sort": ["relevancy desc", "auction_date_type desc", "auction_date_utc asc"],
@@ -99,14 +99,15 @@ def build_payload(makes, damage_types, year_min=None, year_max=None,
         "watchListOnly": False,
         "freeFormSearch": False,
         "hideImages": False,
-        "defaultSort": False,
+        "defaultSort": True,
         "specificRowProvided": False,
         "displayName": "",
         "searchName": "",
         "backUrl": "",
-        "includeTagByField": {},
+        "includeTagByField": {"MISC": "{!tag=FETI}"},
         "rawParams": {},
     }
+    return payload
 
 
 def parse_lot(raw):
@@ -116,6 +117,11 @@ def parse_lot(raw):
     model = raw.get("lm")  or raw.get("mdn") or raw.get("md")
     damage = raw.get("dd") or raw.get("dmg")
     secondary_damage = raw.get("sdd") or raw.get("sd") or ""
+
+    # NLR detection — lfd is a list of feature labels e.g. ["No License Required", ...]
+    features = raw.get("lfd") or []
+    is_nlr = any("no license" in str(f).lower() for f in features)
+
     return {
         "lot_number": lot_number,
         "title": raw.get("ld") or f"{year or ''} {make or ''} {model or ''}".strip(),
@@ -125,20 +131,17 @@ def parse_lot(raw):
         "damage": damage,
         "secondary_damage": secondary_damage,
         "odometer": raw.get("orr") or raw.get("od"),
-        "sale_date": raw.get("ad"),
+        "sale_date": raw.get("ad"),        # Unix ms timestamp
         "location": raw.get("yn"),
         "estimate": raw.get("la") or raw.get("lv"),
         "image_url": raw.get("tims"),
+        "is_nlr": is_nlr,                  # ← True = No License Required
         "url": f"https://www.copart.com/lot/{lot_number}/{raw.get('ldu', '')}".rstrip("/"),
     }
 
 
-# Secondary damage values that indicate airbag deployment — exclude these
-AIRBAG_EXCLUSIONS = {"DEPLOYED AIRBAGS", "BIOHAZARD", "BURN", "STRIPPED"}
-
-
 def _passes_filters(lot, makes, damage_types, year_min, year_max, max_odometer):
-    # Exclude lots with airbag deployment or other high-risk secondary damage
+    # Exclude high-risk secondary damage
     secondary = (lot.get("secondary_damage") or "").upper()
     if secondary and any(excl in secondary for excl in AIRBAG_EXCLUSIONS):
         return False
@@ -147,10 +150,12 @@ def _passes_filters(lot, makes, damage_types, year_min, year_max, max_odometer):
         lot_make = (lot.get("make") or "").upper()
         if not any(m.upper() in lot_make for m in makes):
             return False
+
     if damage_types:
         lot_damage = (lot.get("damage") or "").upper()
         if not any(d.upper() in lot_damage for d in damage_types):
             return False
+
     year = lot.get("year")
     if year is not None:
         try:
@@ -161,6 +166,7 @@ def _passes_filters(lot, makes, damage_types, year_min, year_max, max_odometer):
                 return False
         except (ValueError, TypeError):
             pass
+
     if max_odometer and lot.get("odometer") is not None:
         try:
             odo = int(str(lot["odometer"]).replace(",", "").strip())
@@ -168,12 +174,18 @@ def _passes_filters(lot, makes, damage_types, year_min, year_max, max_odometer):
                 return False
         except (ValueError, TypeError):
             pass
+
     return True
 
 
-def search_api(makes, damage_types, year_min=None, year_max=None,
+def search_api(makes, models, damage_types, year_min=None, year_max=None,
                max_odometer=None, max_pages=3):
+    """
+    Search ALL lots (no NLR filter at API level).
+    Each lot has is_nlr=True/False so notifier can label them differently.
+    """
     results = []
+    rows = 100
 
     with httpx.Client(headers=HEADERS, timeout=30, follow_redirects=True) as client:
         try:
@@ -183,12 +195,13 @@ def search_api(makes, damage_types, year_min=None, year_max=None,
         except Exception as e:
             logger.warning("Homepage fetch failed: %s", e)
 
-        rows = 100
         for page in range(max_pages):
             payload = build_payload(
-                makes, damage_types,
+                makes, models, damage_types,
                 year_min=year_min, year_max=year_max,
-                max_odometer=max_odometer, page=page, rows=rows
+                max_odometer=max_odometer,
+                nlr_only=False,   # fetch ALL — NLR flag is in lot data
+                page=page, rows=rows
             )
 
             try:
@@ -225,9 +238,16 @@ def search_api(makes, damage_types, year_min=None, year_max=None,
                 break
 
             if page == 0:
-                logger.info("SAMPLE: make=%s damage=%s year=%s odo=%s",
-                    content[0].get("mkn"), content[0].get("dd"),
-                    content[0].get("lcy"), content[0].get("orr"))
+                logger.info("SAMPLE: make=%s model=%s damage=%s year=%s odo=%s nlr=%s",
+                    content[0].get("mkn"), content[0].get("lm"),
+                    content[0].get("dd"), content[0].get("lcy"),
+                    content[0].get("orr"), content[0].get("lfd"))
+
+            # Correct totalPages bug (Copart always returns 1)
+            real_total_pages = max(total_pages, -(-total_elements // rows))
+            if real_total_pages != total_pages:
+                logger.info("Corrected totalPages: %d -> %d (based on %d elements)",
+                            total_pages, real_total_pages, total_elements)
 
             before = len(results)
             for raw in content:
@@ -238,16 +258,11 @@ def search_api(makes, damage_types, year_min=None, year_max=None,
             logger.info("Page %d: %d passed filters (running total: %d)",
                         page, len(results) - before, len(results))
 
-            # Copart sometimes returns totalPages=1 even with many results
-            # Calculate real total pages from totalElements
-            real_total_pages = max(total_pages, -(-total_elements // rows))  # ceiling division
-            if real_total_pages != total_pages:
-                logger.info("Corrected totalPages: %d -> %d (based on %d elements)",
-                            total_pages, real_total_pages, total_elements)
-
             if page + 1 >= real_total_pages:
                 logger.info("Reached last page (%d)", real_total_pages)
                 break
 
-    logger.info("API returned %d lots total", len(results))
+    nlr_count = sum(1 for l in results if l.get("is_nlr"))
+    logger.info("API returned %d lots total (%d NLR, %d need broker)",
+                len(results), nlr_count, len(results) - nlr_count)
     return results
