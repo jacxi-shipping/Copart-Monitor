@@ -62,6 +62,7 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           COPART_MAKES: ${{ vars.COPART_MAKES }}
+          COPART_MODELS: ${{ vars.COPART_MODELS }}
           COPART_DAMAGE_TYPES: ${{ vars.COPART_DAMAGE_TYPES }}
           COPART_MAX_PAGES: ${{ vars.COPART_MAX_PAGES || '10' }}
           COPART_YEAR_MIN: ${{ vars.COPART_YEAR_MIN }}
