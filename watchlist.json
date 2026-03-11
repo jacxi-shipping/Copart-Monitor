@@ -17,10 +17,15 @@
     "sale_date": 1773237600000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916341+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:41:55.485267+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -43,10 +48,15 @@
     "sale_date": 1773237600000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916360+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:41:55.912182+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -69,10 +79,15 @@
     "sale_date": 1773237600000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916368+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:41:56.373511+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -95,10 +110,15 @@
     "sale_date": 1773237600000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916373+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:41:56.811661+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -121,10 +141,15 @@
     "sale_date": 1773237600000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916378+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:41:57.270842+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -147,10 +172,15 @@
     "sale_date": 1773237600000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916382+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:41:57.717770+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -173,10 +203,15 @@
     "sale_date": 1773237600000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916386+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:41:58.323089+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -199,10 +234,15 @@
     "sale_date": 1773252000000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916391+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:41:58.806747+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -225,10 +265,15 @@
     "sale_date": 1773255600000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916395+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:41:59.257345+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -251,10 +296,15 @@
     "sale_date": 1773255600000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916399+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:41:59.731131+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -277,10 +327,15 @@
     "sale_date": 1773255600000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916404+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:00.176495+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -303,10 +358,15 @@
     "sale_date": 1773277200000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916408+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:00.618467+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -329,10 +389,15 @@
     "sale_date": 1773291600000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916412+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:01.335098+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -355,10 +420,15 @@
     "sale_date": 1773324000000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916416+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:01.749529+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -381,10 +451,15 @@
     "sale_date": 1773324000000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916420+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:02.218542+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -407,10 +482,15 @@
     "sale_date": 1773324000000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916423+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:02.842878+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -433,10 +513,15 @@
     "sale_date": 1773324000000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916427+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:03.298060+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -459,10 +544,15 @@
     "sale_date": 1773334800000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916431+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:03.735092+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -485,10 +575,15 @@
     "sale_date": 1773334800000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916435+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:04.155056+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -511,10 +606,15 @@
     "sale_date": 1773334800000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916439+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:04.583362+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -537,10 +637,15 @@
     "sale_date": 1773338400000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916443+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:05.033040+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -563,10 +668,15 @@
     "sale_date": 1773410400000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916448+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:05.518691+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -589,10 +699,15 @@
     "sale_date": 1773410400000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916452+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:06.385006+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -615,10 +730,15 @@
     "sale_date": 1773410400000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916456+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:08.225687+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -641,10 +761,15 @@
     "sale_date": 1773410400000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916460+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:09.082332+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -667,10 +792,15 @@
     "sale_date": 1773410400000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916464+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:09.615176+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -693,10 +823,15 @@
     "sale_date": 1773421200000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916468+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:11.224525+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -719,10 +854,15 @@
     "sale_date": 1773421200000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916472+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:11.653664+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -745,10 +885,15 @@
     "sale_date": 1773428400000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916476+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:12.076196+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -771,10 +916,15 @@
     "sale_date": 1773428400000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916480+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:12.889915+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -797,10 +947,15 @@
     "sale_date": 1773428400000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916484+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:13.795583+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -823,10 +978,15 @@
     "sale_date": 1773428400000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916488+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:14.638176+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -849,10 +1009,15 @@
     "sale_date": 1773428400000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916492+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:15.459226+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -875,10 +1040,15 @@
     "sale_date": 1773669600000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916496+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:16.095758+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -901,10 +1071,15 @@
     "sale_date": 1773669600000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916500+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:16.557320+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -927,10 +1102,15 @@
     "sale_date": 1773669600000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916505+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:17.783270+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -953,10 +1133,15 @@
     "sale_date": 1773680400000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916509+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:18.226264+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -979,10 +1164,15 @@
     "sale_date": 1773680400000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916513+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:19.024790+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1005,10 +1195,15 @@
     "sale_date": 1773687600000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916517+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:19.783656+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1031,10 +1226,15 @@
     "sale_date": 1773687600000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916521+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:20.513963+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1057,10 +1257,15 @@
     "sale_date": 1773687600000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916525+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:21.258060+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1083,10 +1288,15 @@
     "sale_date": 1773687600000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916528+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:21.904685+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1109,10 +1319,15 @@
     "sale_date": 1773687600000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916532+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:22.711455+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1135,10 +1350,15 @@
     "sale_date": 1773687600000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916537+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:23.120752+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1161,10 +1381,15 @@
     "sale_date": 1773698400000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916541+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:23.532925+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1187,10 +1412,15 @@
     "sale_date": 1773752400000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916545+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:24.252645+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1213,10 +1443,15 @@
     "sale_date": 1773756000000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916549+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:24.967537+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1239,10 +1474,15 @@
     "sale_date": 1773763200000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916553+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:26.250927+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1265,10 +1505,15 @@
     "sale_date": 1773766800000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916556+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:27.357738+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1291,10 +1536,15 @@
     "sale_date": 1773770400000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916560+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:28.365866+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1317,10 +1567,15 @@
     "sale_date": 1773774000000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916564+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:29.240426+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1343,10 +1598,15 @@
     "sale_date": 1773774000000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916568+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:30.001036+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1369,10 +1629,15 @@
     "sale_date": 1773810000000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916571+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:30.820470+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1395,10 +1660,15 @@
     "sale_date": 1773842400000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916575+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:31.864042+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1421,10 +1691,15 @@
     "sale_date": 1773842400000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916579+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:34.635816+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1447,10 +1722,15 @@
     "sale_date": 1773842400000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916583+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:35.105859+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1473,10 +1753,15 @@
     "sale_date": 1773853200000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916587+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:35.834344+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1499,10 +1784,15 @@
     "sale_date": 1773939600000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916591+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:36.637436+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1525,10 +1815,15 @@
     "sale_date": 1774274400000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916613+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:37.428559+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1551,10 +1846,15 @@
     "sale_date": 1774285200000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916618+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:37.987253+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1577,10 +1877,15 @@
     "sale_date": 1774292400000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916622+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:38.774260+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1603,10 +1908,15 @@
     "sale_date": 1774360800000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916626+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:39.740239+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1629,10 +1939,15 @@
     "sale_date": 1774371600000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916630+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:40.691571+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1655,10 +1970,15 @@
     "sale_date": 1774375200000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916634+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:41.505482+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1681,10 +2001,15 @@
     "sale_date": 1774378800000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916638+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:42.609294+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1707,10 +2032,15 @@
     "sale_date": 1774447200000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916642+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:43.352243+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1733,10 +2063,15 @@
     "sale_date": 1774447200000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916646+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:44.137084+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1759,10 +2094,15 @@
     "sale_date": 1774447200000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916650+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:44.999337+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1785,10 +2125,15 @@
     "sale_date": 1774533600000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916654+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:45.681221+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1811,10 +2156,15 @@
     "sale_date": 1774620000000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916658+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:46.708851+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1837,10 +2187,15 @@
     "sale_date": 1774879200000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916661+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:47.435520+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1863,10 +2218,15 @@
     "sale_date": 1774976400000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916665+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:48.424934+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1889,10 +2249,15 @@
     "sale_date": 1774983600000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916669+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:50.202411+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1915,10 +2280,15 @@
     "sale_date": 1774983600000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916673+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:50.850440+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1941,10 +2311,15 @@
     "sale_date": 1775052000000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916677+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:51.748857+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1967,10 +2342,15 @@
     "sale_date": 1775138400000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916681+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:52.624273+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -1993,10 +2373,15 @@
     "sale_date": 1775149200000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916686+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:53.483842+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2019,10 +2404,15 @@
     "sale_date": 1775149200000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916689+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:54.228987+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2045,10 +2435,15 @@
     "sale_date": 1775484000000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916693+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:55.806704+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2071,10 +2466,15 @@
     "sale_date": 1775487600000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916697+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:56.818939+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2097,10 +2497,15 @@
     "sale_date": 1775494800000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916701+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:58.070436+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2123,10 +2528,15 @@
     "sale_date": 1775502000000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916705+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:42:59.528904+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2149,10 +2559,15 @@
     "sale_date": 1775570400000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916709+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:00.393749+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2175,10 +2590,15 @@
     "sale_date": 1775581200000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916713+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:01.233996+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2201,10 +2621,15 @@
     "sale_date": 1775584800000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916717+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:02.086848+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2227,10 +2652,15 @@
     "sale_date": 1775584800000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916721+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:03.037317+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2253,10 +2683,15 @@
     "sale_date": 1775656800000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916727+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:03.778027+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2279,10 +2714,15 @@
     "sale_date": 1775743200000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916732+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:04.679357+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2305,10 +2745,15 @@
     "sale_date": 1775750400000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916736+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:05.293700+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2331,10 +2776,15 @@
     "sale_date": 1775754000000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916741+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:05.712892+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2357,10 +2807,15 @@
     "sale_date": 1775754000000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916745+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:06.193119+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2383,10 +2838,15 @@
     "sale_date": 1775754000000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916749+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:06.662945+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2409,10 +2869,15 @@
     "sale_date": 1775761200000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916753+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:07.863800+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2435,10 +2900,15 @@
     "sale_date": 1775840400000,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916757+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:10.240536+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2461,10 +2931,15 @@
     "sale_date": 1776088800000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916761+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:11.241656+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2487,10 +2962,15 @@
     "sale_date": 1776099600000,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916765+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:11.853246+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2513,10 +2993,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916769+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:12.620611+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2539,10 +3024,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916773+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:13.369845+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2565,10 +3055,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916777+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:14.240819+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2591,10 +3086,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916781+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:14.953704+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2617,10 +3117,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916785+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:15.685488+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2643,10 +3148,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916789+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:16.721339+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2669,10 +3179,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916793+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:17.569392+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2695,10 +3210,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916796+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:18.492896+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2721,10 +3241,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916800+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:19.290878+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2747,10 +3272,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916804+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:20.729867+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2773,10 +3303,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916808+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:21.861893+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2799,10 +3334,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916812+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:23.299295+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2825,10 +3365,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916815+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:24.668276+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2851,10 +3396,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916819+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:25.461929+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2877,10 +3427,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916823+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:26.507261+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2903,10 +3458,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916827+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:27.464452+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2929,10 +3489,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916831+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:28.439467+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2955,10 +3520,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916835+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:28.889319+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -2981,10 +3551,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916839+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:29.355087+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3007,10 +3582,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916843+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:30.172210+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3033,10 +3613,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916847+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:30.933403+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3059,10 +3644,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916851+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:31.997705+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3085,10 +3675,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916855+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:33.796765+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3111,10 +3706,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916859+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:34.950497+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3137,10 +3737,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916863+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:35.870145+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3163,10 +3768,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916867+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:36.781953+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3189,10 +3799,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916872+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:37.596806+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3215,10 +3830,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916876+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:38.491624+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3241,10 +3861,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916880+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:39.352694+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3267,10 +3892,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916884+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:40.228982+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3293,10 +3923,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916888+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:41.320436+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3319,10 +3954,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916892+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:42.335327+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3345,10 +3985,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916896+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:43.433488+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3371,10 +4016,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916900+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:44.245339+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3397,10 +4047,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916904+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:45.257522+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3423,10 +4078,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916908+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:46.507572+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3449,10 +4109,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916912+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:47.845927+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3475,10 +4140,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916916+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:48.611213+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3501,10 +4171,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916920+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:49.349100+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3527,10 +4202,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916924+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:50.721319+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3553,10 +4233,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916927+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:51.490579+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3579,10 +4264,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916931+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:52.321940+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3605,10 +4295,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916935+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:53.072049+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3631,10 +4326,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916939+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:53.835986+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3657,10 +4357,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916943+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:54.636835+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3683,10 +4388,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916947+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:55.501524+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3709,10 +4419,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916952+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:56.083158+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3735,10 +4450,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916956+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:56.848382+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3761,10 +4481,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916960+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:57.713772+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3787,10 +4512,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916963+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:58.941732+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3813,10 +4543,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916967+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:43:59.389263+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3839,10 +4574,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916971+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:00.474914+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3865,10 +4605,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916975+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:01.065219+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3891,10 +4636,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916979+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:01.895862+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3917,10 +4667,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916983+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:03.174398+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3943,10 +4698,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916987+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:05.026615+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3969,10 +4729,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916991+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:05.974365+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -3995,10 +4760,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.916996+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:07.070248+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4021,10 +4791,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917000+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:08.465881+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4047,10 +4822,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917004+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:11.855475+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4073,10 +4853,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917007+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:12.664049+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4099,10 +4884,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917011+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:13.471672+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4125,10 +4915,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917015+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:14.356515+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4151,10 +4946,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917019+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:15.269764+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4177,10 +4977,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917024+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:16.177417+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4203,10 +5008,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917028+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:17.982748+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4229,10 +5039,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917032+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:19.191507+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4255,10 +5070,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917036+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:19.994982+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4281,10 +5101,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917041+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:20.922444+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4307,10 +5132,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917045+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:21.421474+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4333,10 +5163,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917049+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:22.244237+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4359,10 +5194,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917053+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:23.016134+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4385,10 +5225,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917057+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:23.884376+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4411,10 +5256,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917061+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:25.344531+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4437,10 +5287,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917065+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:25.997400+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4463,10 +5318,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917070+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:27.288392+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4489,10 +5349,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917075+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:28.242809+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4515,10 +5380,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917079+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:29.051531+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4541,10 +5411,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917083+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:29.939580+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4567,10 +5442,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917087+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:31.244370+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4593,10 +5473,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917091+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:32.139118+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4619,10 +5504,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917095+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:32.977318+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4645,10 +5535,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917100+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:34.080037+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4671,10 +5566,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917104+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:34.790958+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4697,10 +5597,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917108+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:36.633612+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4723,10 +5628,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917112+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:37.873178+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4749,10 +5659,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917117+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:38.967001+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4775,10 +5690,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917121+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:39.873050+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4801,10 +5721,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917124+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:40.644738+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4827,10 +5752,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917128+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:41.927158+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4853,10 +5783,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917132+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:42.754949+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4879,10 +5814,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917136+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:43.518286+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4905,10 +5845,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917140+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:45.210685+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4931,10 +5876,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917144+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:46.623648+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4957,10 +5907,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917148+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:47.469092+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -4983,10 +5938,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917152+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:48.574536+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5009,10 +5969,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917156+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:49.468878+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5035,10 +6000,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917160+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:50.520014+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5061,10 +6031,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917163+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:51.634163+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5087,10 +6062,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917167+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:52.490647+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5113,10 +6093,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917171+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:53.394024+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5139,10 +6124,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917175+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:54.264444+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5165,10 +6155,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917179+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:55.007024+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5191,10 +6186,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917183+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:55.742404+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5217,10 +6217,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917187+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:56.643575+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5243,10 +6248,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917191+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:57.804295+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5269,10 +6279,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917195+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:58.804779+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5295,10 +6310,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917198+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:44:59.864515+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5321,10 +6341,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917202+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:00.754850+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5347,10 +6372,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917206+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:01.506393+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5373,10 +6403,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917209+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:02.316895+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5399,10 +6434,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917213+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:03.204803+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5425,10 +6465,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917217+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:04.588119+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5451,10 +6496,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917221+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:05.476081+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5477,10 +6527,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917225+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:06.282982+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5503,10 +6558,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917229+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:07.232638+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5529,10 +6589,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917232+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:08.104227+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5555,10 +6620,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917236+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:08.922122+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5581,10 +6651,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917240+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:09.546324+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5607,10 +6682,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917244+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:11.107364+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5633,10 +6713,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917248+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:11.918692+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5659,10 +6744,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917252+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:12.952472+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5685,10 +6775,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917256+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:14.568505+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5711,10 +6806,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917260+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:15.963453+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5737,10 +6837,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917263+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:17.120950+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5763,10 +6868,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917267+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:17.897166+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5789,10 +6899,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917271+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:18.733961+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5815,10 +6930,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917275+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:19.652319+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5841,10 +6961,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917279+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:20.472195+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5867,10 +6992,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917283+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:21.346216+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5893,10 +7023,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917286+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:22.850005+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5919,10 +7054,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917290+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:23.816701+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5945,10 +7085,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917294+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:25.135169+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5971,10 +7116,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917298+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:25.808016+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -5997,10 +7147,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917301+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:26.492454+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6023,10 +7178,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917305+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:27.292361+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6049,10 +7209,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917309+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:29.414914+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6075,10 +7240,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917313+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:30.914847+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6101,10 +7271,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917317+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:31.646125+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6127,10 +7302,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917320+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:33.641068+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6153,10 +7333,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917324+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:34.974561+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6179,10 +7364,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917328+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:36.080350+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6205,10 +7395,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917332+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:36.957961+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6231,10 +7426,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917336+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:37.969277+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6257,10 +7457,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917340+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:38.736511+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6283,10 +7488,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917344+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:39.803251+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6309,10 +7519,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917348+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:40.696015+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6335,10 +7550,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917352+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:41.511096+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6361,10 +7581,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917356+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:42.276003+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6387,10 +7612,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917360+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:42.895345+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6413,10 +7643,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917364+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:43.619778+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6439,10 +7674,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917368+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:44.397919+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6465,10 +7705,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917372+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:45.768110+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6491,10 +7736,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917376+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:46.609143+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6517,10 +7767,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917379+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:47.305201+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6543,10 +7798,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917383+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:49.379076+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6569,10 +7829,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917387+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:50.287463+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6595,10 +7860,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917391+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:51.172584+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6621,10 +7891,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917395+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:52.483963+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6647,10 +7922,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917398+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:53.364578+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6673,10 +7953,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917402+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:54.792612+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6699,10 +7984,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917406+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:55.735558+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6725,10 +8015,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917410+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:56.805303+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6751,10 +8046,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917414+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:57.857004+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6777,10 +8077,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917418+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:45:58.723878+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6803,10 +8108,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917422+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:00.600336+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6829,10 +8139,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917425+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:01.239302+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6855,10 +8170,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917429+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:02.130699+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6881,10 +8201,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917433+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:03.309721+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6907,10 +8232,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917437+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:04.076943+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6933,10 +8263,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917441+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:05.133732+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6959,10 +8294,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917445+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:05.889364+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -6985,10 +8325,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917449+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:06.804162+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7011,10 +8356,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917452+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:07.509525+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7037,10 +8387,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917456+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:08.205886+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7063,10 +8418,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917460+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:09.667433+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7089,10 +8449,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917464+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:11.211773+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7115,10 +8480,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917468+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:12.833647+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7141,10 +8511,15 @@
     "sale_date": null,
     "is_nlr": true,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917472+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:13.637771+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7167,10 +8542,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917476+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:14.432032+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7193,10 +8573,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917480+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:15.228768+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7219,10 +8604,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917483+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:17.084287+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7245,10 +8635,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917487+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:17.865680+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7271,10 +8666,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917491+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:18.612874+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7297,10 +8697,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917495+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:19.874606+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7323,10 +8728,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917499+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:20.669875+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7349,10 +8759,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917503+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:21.747461+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7375,10 +8790,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917507+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:22.623760+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7401,10 +8821,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917511+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:25.194680+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7427,10 +8852,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917515+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:27.532475+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7453,10 +8883,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917519+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:28.318183+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7479,10 +8914,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917523+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:29.045737+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7505,10 +8945,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917527+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:30.755056+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7531,10 +8976,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917531+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:31.927634+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7557,10 +9007,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917535+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:33.199256+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7583,10 +9038,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917538+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:34.077808+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7609,10 +9069,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917542+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:34.898967+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7635,10 +9100,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917546+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:36.649364+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7661,10 +9131,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917550+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:37.439481+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7687,10 +9162,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917554+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:38.889262+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -7713,10 +9193,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-11T12:39:57.917558+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-11T12:46:39.662428+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
