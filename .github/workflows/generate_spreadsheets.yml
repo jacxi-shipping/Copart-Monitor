@@ -1,0 +1,47 @@
+name: Generate Spreadsheets
+
+on:
+  # Auto-run after monitor completes
+  workflow_run:
+    workflows: ["Copart Monitor"]
+    types: [completed]
+  # Also allow manual trigger
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install openpyxl
+
+      - name: Generate spreadsheets
+        run: python generate_spreadsheets.py --all
+
+      - name: Commit spreadsheets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add copart_lots.xlsx copart_auctions.xlsx
+          git diff --staged --quiet || git commit -m "chore: update spreadsheets [skip ci]"
+          git push
