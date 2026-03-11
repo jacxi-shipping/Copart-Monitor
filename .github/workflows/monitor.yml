@@ -2,7 +2,8 @@ name: Copart Monitor
 
 on:
   schedule:
-    - cron: "0 */3 * * *"
+    # Runs every 2 hours
+    - cron: "0 */12 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -26,13 +27,13 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 1
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python 3.12
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: "pip"
@@ -61,7 +62,6 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           COPART_MAKES: ${{ vars.COPART_MAKES }}
-          COPART_MODELS: ${{ vars.COPART_MODELS }}
           COPART_DAMAGE_TYPES: ${{ vars.COPART_DAMAGE_TYPES }}
           COPART_MAX_PAGES: ${{ vars.COPART_MAX_PAGES || '10' }}
           COPART_YEAR_MIN: ${{ vars.COPART_YEAR_MIN }}
@@ -79,6 +79,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add state.json watchlist.json
-          git diff --staged --quiet || git commit -m "chore: update state [skip ci]"
+          git add state.json
+          git diff --staged --quiet || git commit -m "chore: update state.json [skip ci]"
           git push
