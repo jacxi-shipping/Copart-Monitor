@@ -3,20 +3,19 @@
 Copart Monitor — main entry point.
 
 GitHub Variables you can change any time without touching code:
-  COPART_MAKES          e.g.  Toyota,Hyundai
-  COPART_MODELS         e.g.  RAV4,RAV4 HYBRID,RAV4 PRIME,RAV4 ADVENTURE,RAV4 XSE,RAV4 PLUG-IN HYBRID,SONATA
-  COPART_DAMAGE_TYPES   e.g.  REAR END,SIDE,HAIL,MINOR DENT/SCRATCHES,NORMAL WEAR,VANDALISM
-  COPART_YEAR_MIN       e.g.  2023
-  COPART_YEAR_MAX       e.g.  2027
-  COPART_MAX_ODOMETER   e.g.  40000
-  COPART_MAX_PAGES      e.g.  11
+  COPART_MAKES          e.g. Toyota,Hyundai
+  COPART_MODELS         e.g. RAV4,RAV4 HYBRID,RAV4 PRIME,RAV4 ADVENTURE,RAV4 XSE,RAV4 PLUG-IN HYBRID
+  COPART_DAMAGE_TYPES   e.g. REAR END,SIDE,HAIL,MINOR DENT/SCRATCHES,NORMAL WEAR,VANDALISM
+  COPART_YEAR_MIN       e.g. 2023
+  COPART_YEAR_MAX       e.g. 2027
+  COPART_MAX_ODOMETER   e.g. 40000
+  COPART_MAX_PAGES      e.g. 11
 
 Usage:
-  python monitor.py                    # Run with config from environment
-  python monitor.py --test-telegram    # Send a test Telegram message
-  python monitor.py --dry-run          # Fetch lots but don't notify or save state
+  python monitor.py             # Run with config from environment
+  python monitor.py --test-telegram   # Send a test Telegram message
+  python monitor.py --dry-run         # Fetch lots but don't notify or save state
 """
-
 import argparse
 import logging
 import os
@@ -42,7 +41,7 @@ from state_manager import load_state, save_state, find_new_lots, mark_seen
 def get_config():
     required = {
         "TELEGRAM_BOT_TOKEN": os.environ.get("TELEGRAM_BOT_TOKEN"),
-        "TELEGRAM_CHAT_ID":   os.environ.get("TELEGRAM_CHAT_ID"),
+        "TELEGRAM_CHAT_ID": os.environ.get("TELEGRAM_CHAT_ID"),
     }
     for key, val in required.items():
         if not val:
@@ -58,9 +57,8 @@ def get_config():
     makes        = [m.strip() for m in makes_raw.split(",")  if m.strip()]
     models       = [m.strip() for m in models_raw.split(",") if m.strip()]
     damage_types = [d.strip() for d in damage_raw.split(",") if d.strip()]
-
-    year_min = int(year_min_raw) if year_min_raw.isdigit() else None
-    year_max = int(year_max_raw) if year_max_raw.isdigit() else None
+    year_min     = int(year_min_raw) if year_min_raw.isdigit() else None
+    year_max     = int(year_max_raw) if year_max_raw.isdigit() else None
 
     max_odo_raw  = os.environ.get("COPART_MAX_ODOMETER", "").strip().replace(",", "")
     max_odometer = int(max_odo_raw) if max_odo_raw.isdigit() else None
@@ -83,8 +81,9 @@ def get_config():
 
 
 def fetch_lots(makes, models, damage_types, year_min, year_max, max_odometer, max_pages):
-    """Try API first; fall back to Playwright on failure or empty results."""
-    logger.info("Fetching lots: makes=%s models=%s damage=%s years=%s-%s max_odo=%s",
+    """Try API first; fall back to Playwright on failure or empty results.
+    Both paths apply the same model filter — no leakage."""
+    logger.info("Fetching: makes=%s models=%s damage=%s years=%s-%s odo≤%s",
                 makes, models, damage_types, year_min or "*", year_max or "*", max_odometer or "*")
     try:
         lots = search_api(
@@ -102,32 +101,17 @@ def fetch_lots(makes, models, damage_types, year_min, year_max, max_odometer, ma
 
     logger.info("Attempting Playwright scraper...")
     try:
+        # Pass models so the Playwright path also filters by model
         lots = search_playwright(
-            makes, damage_types,
+            makes, models, damage_types,
             year_min=year_min, year_max=year_max,
             max_odometer=max_odometer, max_pages=max_pages
         )
-        if year_min or year_max:
-            before = len(lots)
-            lots = [l for l in lots if _year_in_range(l.get("year"), year_min, year_max)]
-            logger.info("Year filter: %d → %d lots", before, len(lots))
         logger.info("✅ Playwright succeeded with %d lots", len(lots))
         return lots
     except Exception as e:
         logger.error("Playwright also failed: %s", e)
         return []
-
-
-def _year_in_range(year, year_min, year_max):
-    if year is None:
-        return True
-    try:
-        y = int(year)
-        if year_min and y < year_min: return False
-        if year_max and y > year_max: return False
-        return True
-    except (ValueError, TypeError):
-        return True
 
 
 def main():
@@ -143,15 +127,10 @@ def main():
         sys.exit(0 if ok else 1)
 
     state = load_state(config["state_file"])
-
-    lots = fetch_lots(
-        config["makes"],
-        config["models"],
-        config["damage_types"],
-        config["year_min"],
-        config["year_max"],
-        config["max_odometer"],
-        config["max_pages"],
+    lots  = fetch_lots(
+        config["makes"], config["models"], config["damage_types"],
+        config["year_min"], config["year_max"],
+        config["max_odometer"], config["max_pages"],
     )
 
     if not lots:
@@ -160,7 +139,7 @@ def main():
             save_state(state, config["state_file"])
         sys.exit(0)
 
-    new_lots = find_new_lots(lots, state)
+    new_lots    = find_new_lots(lots, state)
     is_first_run = state.get("last_run") is None
 
     if is_first_run:
@@ -172,7 +151,8 @@ def main():
         if args.dry_run:
             for lot in new_lots:
                 nlr = "✅ NLR" if lot.get("is_nlr") else "🔑 Broker"
-                logger.info("  • [%s] %s %s — %s", lot["lot_number"], lot["title"], nlr, lot["url"])
+                logger.info("  • [%s] %s %s — %s",
+                            lot["lot_number"], lot["title"], nlr, lot["url"])
         else:
             MAX_NOTIFY = 20
             notify_lots = new_lots[:MAX_NOTIFY]
@@ -186,12 +166,11 @@ def main():
                             MAX_NOTIFY, len(new_lots) - MAX_NOTIFY)
 
     if not args.dry_run:
-        if new_lots:
+        lots_to_track = lots if is_first_run else new_lots
+        if lots_to_track:
             from auction_tracker import add_to_watchlist
-            watchlist_file = Path("watchlist.json")
-            add_to_watchlist(new_lots if not is_first_run else lots, watchlist_file)
-
-        state = mark_seen(new_lots if not is_first_run else lots, state)
+            add_to_watchlist(lots_to_track, Path("watchlist.json"))
+        state = mark_seen(lots if is_first_run else new_lots, state)
         save_state(state, config["state_file"])
         logger.info("State saved.")
     else:
@@ -203,7 +182,7 @@ if __name__ == "__main__":
 
 
 def run_watchlist_check(config):
-    """Called by auction_tracker.yml to check active bid updates."""
+    """Called by auction_tracker to check active bid updates."""
     from auction_tracker import check_watchlist
     from notifier import send_bid_alert
 
