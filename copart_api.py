@@ -145,10 +145,15 @@ def _passes_filters(lot, makes, models, damage_types, year_min, year_max, max_od
         lot_make = (lot.get("make") or "").upper()
         if not any(m.upper() in lot_make for m in makes):
             return False
-    if models:
-        lot_model = (lot.get("model") or "").upper().strip()
-        if not any(lot_model == m.upper().strip() for m in models):
-            return False
+    # Model filter — STRICT exact match. If no models configured, block everything
+    # (prevents all-Toyota dumps if env var is missing)
+    if not models:
+        logger.warning("No COPART_MODELS configured — rejecting lot %s to prevent unfiltered output",
+                       lot.get("lot_number", "?"))
+        return False
+    lot_model = (lot.get("model") or "").upper().strip()
+    if not any(lot_model == m.upper().strip() for m in models):
+        return False
     if damage_types:
         lot_damage = (lot.get("damage") or "").upper()
         if not any(d.upper() in lot_damage for d in damage_types):
