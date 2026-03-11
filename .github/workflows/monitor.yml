@@ -19,6 +19,11 @@ on:
 permissions:
   contents: write
 
+# Prevent two monitor runs overlapping and clobbering each other's commits
+concurrency:
+  group: copart-monitor
+  cancel-in-progress: false
+
 jobs:
   monitor:
     runs-on: ubuntu-latest
