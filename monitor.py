@@ -75,6 +75,7 @@ def get_config():
         "year_min":     year_min,
         "year_max":     year_max,
         "max_odometer": max_odometer,
+
         "max_pages":    int(os.environ.get("COPART_MAX_PAGES", "3")),
         "state_file":   Path(os.environ.get("STATE_FILE", "state.json")),
     }
@@ -171,6 +172,8 @@ def main():
             from auction_tracker import add_to_watchlist
             add_to_watchlist(lots_to_track, Path("watchlist.json"))
             logger.info("Watchlist updated with %d lot(s)", len(lots_to_track))
+
+
         # Always mark seen but only commit watchlist when it actually changed
         state = mark_seen(lots if is_first_run else new_lots, state)
         save_state(state, config["state_file"])
@@ -183,6 +186,7 @@ if __name__ == "__main__":
     main()
 
 
+
 def run_watchlist_check(config):
     """Called by auction_tracker to check active bid updates."""
     from auction_tracker import check_watchlist
@@ -190,7 +194,8 @@ def run_watchlist_check(config):
 
     watchlist_file = config.get("watchlist_file", Path("watchlist.json"))
 
-    def notifier(lot, alert_type, current_bid=0, minutes_left=None):
+    def notifier(lot, alert_type, current_bid=0, minutes_left=None,
+                 bid_status=None, prev_bid=None):
         send_bid_alert(
             token=config["telegram_token"],
             chat_id=config["telegram_chat_id"],
@@ -198,6 +203,8 @@ def run_watchlist_check(config):
             alert_type=alert_type,
             current_bid=current_bid,
             minutes_left=minutes_left,
+            bid_status=bid_status,
+            prev_bid=prev_bid,
         )
 
     check_watchlist(watchlist_file, notifier)
