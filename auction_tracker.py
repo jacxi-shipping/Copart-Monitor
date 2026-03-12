@@ -52,14 +52,30 @@ def get_target_price(year, make, model):
 
 def _build_cookie_header():
     """
-    Read COPART_COOKIES env var (full cookie string from browser DevTools)
-    and return it ready to use in headers.
+    Read COPART_COOKIES env var (full cookie string from browser DevTools).
+    Strips newlines, tabs, and non-ASCII characters that break HTTP headers.
     Format: "usersessionid=abc123; C2BID=xyz; reese84=..."
     """
-    cookies = os.environ.get("COPART_COOKIES", "").strip()
+    cookies = os.environ.get("COPART_COOKIES", "")
+    # Remove newlines, carriage returns, tabs introduced by copy-paste
+    cookies = cookies.replace("\n", "").replace("\r", "").replace("\t", "")
+    # Strip any non-printable or non-ASCII bytes (e.g. BOM, smart quotes)
+    cookies = "".join(c for c in cookies if 32 <= ord(c) < 127)
+    cookies = cookies.strip()
     if not cookies:
         logger.warning("COPART_COOKIES env var not set — bid fetch will fail auth")
     return cookies
+
+
+def _parse_cookies_dict(cookie_str):
+    """Parse 'key=val; key2=val2' into a dict for httpx cookies param."""
+    result = {}
+    for part in cookie_str.split(";"):
+        part = part.strip()
+        if "=" in part:
+            k, _, v = part.partition("=")
+            result[k.strip()] = v.strip()
+    return result
 
 
 def get_bid_details(client, lot_number):
@@ -163,10 +179,10 @@ def sync_copart_watchlist(watchlist_file, cookie_str):
     Returns the number of new lots added.
     """
     url = "https://www.copart.com/data/lots/watchList"
-    headers_auth = {**HEADERS, "Cookie": cookie_str} if cookie_str else HEADERS
+    cookies_dict = _parse_cookies_dict(cookie_str) if cookie_str else {}
 
     try:
-        with httpx.Client(headers=headers_auth, timeout=20, follow_redirects=True) as client:
+        with httpx.Client(headers=HEADERS, cookies=cookies_dict, timeout=20, follow_redirects=True) as client:
             client.get(HOME_URL)   # warm up session
             resp = client.get(url)
             resp.raise_for_status()
@@ -191,7 +207,7 @@ def sync_copart_watchlist(watchlist_file, cookie_str):
 
     # Fetch solr metadata for each new lot
     lots_to_add = []
-    with httpx.Client(headers=headers_auth, timeout=20, follow_redirects=True) as client:
+    with httpx.Client(headers=HEADERS, cookies=cookies_dict, timeout=20, follow_redirects=True) as client:
         for lid in new_ids:
             try:
                 r = client.get(f"https://www.copart.com/public/data/lotdetails/solr/{lid}")
@@ -240,12 +256,12 @@ def check_watchlist(watchlist_file, notifier_fn):
     if not watchlist:
         logger.info("Watchlist is empty")
         return
-    headers = {**HEADERS, "Cookie": cookie_str} if cookie_str else HEADERS
+    cookies_dict = _parse_cookies_dict(cookie_str) if cookie_str else {}
     now = datetime.now(timezone.utc)
     to_close = []
     updated = 0
 
-    with httpx.Client(headers=headers, timeout=20, follow_redirects=True) as client:
+    with httpx.Client(headers=HEADERS, cookies=cookies_dict, timeout=20, follow_redirects=True) as client:
         # Warm up session
         client.get(HOME_URL)
 
