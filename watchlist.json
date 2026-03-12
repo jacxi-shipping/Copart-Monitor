@@ -9472,10 +9472,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-12T05:08:40.013416+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-12T07:55:19.120140+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -9498,10 +9503,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-12T05:08:40.013439+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-12T07:55:20.006350+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -9524,10 +9534,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-12T05:08:40.013448+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-12T07:55:20.754122+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
@@ -9550,10 +9565,15 @@
     "sale_date": null,
     "is_nlr": false,
     "target_price": 6000,
-    "last_bid": null,
+    "last_bid": 0,
     "alerted_closing": false,
     "added_at": "2026-03-12T05:08:40.013453+00:00",
-    "bid_history": [],
+    "bid_history": [
+      {
+        "timestamp": "2026-03-12T07:55:21.232521+00:00",
+        "bid": 0
+      }
+    ],
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
