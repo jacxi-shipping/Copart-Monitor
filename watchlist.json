@@ -11224,5 +11224,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "46527156": {
+    "lot_number": "46527156",
+    "title": "2025 TOYOTA RAV4 HYBRID XLE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4 HYBRID",
+    "trim": "XLE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 2013.0,
+    "location": "WA - SPANAWAY",
+    "estimate": 37478.0,
+    "url": "https://www.copart.com/lot/46527156/2025-toyota-rav4-hybrid-xle-wa-spanaway",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0326/69497e9327f843b8bf7ccb82f474cb23_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-03-19T05:17:27.139434+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }
