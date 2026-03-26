@@ -12655,5 +12655,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "47826086": {
+    "lot_number": "47826086",
+    "title": "2025 TOYOTA RAV4 XLE PREMIUM",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE PREMIUM",
+    "damage": "SIDE",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 7462.0,
+    "location": "IL - SOUTHERN ILLINOIS",
+    "estimate": 33956.0,
+    "url": "https://www.copart.com/lot/47826086/2025-toyota-rav4-xle-premium-il-southern-illinois",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0326/090bd1b9ed0142e2ad0a69b40b087105_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-03-26T21:56:38.392741+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }
