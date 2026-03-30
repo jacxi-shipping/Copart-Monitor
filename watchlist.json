@@ -13006,5 +13006,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "47883446": {
+    "lot_number": "47883446",
+    "title": "2025 TOYOTA RAV4 HYBRID XLE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4 HYBRID",
+    "trim": "XLE",
+    "damage": "SIDE",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": true,
+    "odometer": 20453.0,
+    "location": "FL - OCALA",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/47883446/2025-toyota-rav4-hybrid-xle-fl-ocala",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0326/148232b806d7401e95be1d838995986a_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-03-30T12:05:08.873964+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }
