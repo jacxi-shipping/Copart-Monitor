@@ -13357,5 +13357,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "46897616": {
+    "lot_number": "46897616",
+    "title": "2023 TOYOTA RAV4 HYBRID XLE",
+    "year": 2023,
+    "make": "TOYOTA",
+    "model": "RAV4 HYBRID",
+    "trim": "XLE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 19968.0,
+    "location": "WA - NORTH SEATTLE",
+    "estimate": 31241.0,
+    "url": "https://www.copart.com/lot/46897616/2023-toyota-rav4-hybrid-xle-wa-north-seattle",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0326/b4e9a432a0294e80a92ee114c49f69d7_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-03-31T05:57:35.036097+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }
