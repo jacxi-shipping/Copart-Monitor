@@ -14842,5 +14842,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "49100226": {
+    "lot_number": "49100226",
+    "title": "2025 TOYOTA RAV4 LE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 25216.0,
+    "location": "KY - LOUISVILLE",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/49100226/2025-toyota-rav4-le-ky-louisville",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0426/59b7672ae995420f84ee52ffde1455f5_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-04-07T13:24:05.432191+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }
