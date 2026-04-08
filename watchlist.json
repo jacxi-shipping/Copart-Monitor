@@ -15166,5 +15166,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "72873505": {
+    "lot_number": "72873505",
+    "title": "2025 TOYOTA RAV4 HYBRID XLE AWD",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 10234.0,
+    "location": "MD - BALTIMORE EAST",
+    "estimate": 38740.0,
+    "url": "https://www.copart.com/lot/72873505/2025-toyota-rav4-hybrid-xle-awd-md-baltimore-east",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0226/7ea2343569e94447b8fa3e53f6c0dbe0_thb.jpg",
+    "sale_date": 1775743200000,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-04-08T05:13:20.235179+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }
