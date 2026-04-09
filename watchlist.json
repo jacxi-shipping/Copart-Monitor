@@ -15490,5 +15490,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "78871735": {
+    "lot_number": "78871735",
+    "title": "2024 TOYOTA RAV4 PRIME XSE",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4 PRIME",
+    "trim": "XSE",
+    "damage": "REAR END",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": true,
+    "odometer": 27333.0,
+    "location": "CA - SAN DIEGO",
+    "estimate": 41030.0,
+    "url": "https://www.copart.com/lot/78871735/salvage-2024-toyota-rav4-prime-xse-ca-san-diego",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0226/5d5dadb4dea54708a2894c52c1ad4c8f_thb.jpg",
+    "sale_date": 1778612400000,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-04-09T19:11:08.398419+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }
