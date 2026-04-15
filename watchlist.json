@@ -16057,5 +16057,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "48846476": {
+    "lot_number": "48846476",
+    "title": "2025 TOYOTA RAV4 XLE PREMIUM",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE PREMIUM",
+    "damage": "SIDE",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 16532.0,
+    "location": "SC - NORTH CHARLESTON",
+    "estimate": 31825.0,
+    "url": "https://www.copart.com/lot/48846476/2025-toyota-rav4-xle-premium-sc-north-charleston",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0426/dc9b0d1ca0234db8995f62757783e51d_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-04-15T13:42:48.628438+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }
