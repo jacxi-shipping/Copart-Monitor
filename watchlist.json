@@ -16813,5 +16813,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "49582116": {
+    "lot_number": "49582116",
+    "title": "2023 TOYOTA RAV4 XLE",
+    "year": 2023,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "SIDE",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": false,
+    "odometer": null,
+    "location": "NJ - GLASSBORO EAST",
+    "estimate": -1.0,
+    "url": "https://www.copart.com/lot/49582116/2023-toyota-rav4-xle-nj-glassboro-east",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0426/51a78dc11cdc4df8b7d62940de35b551_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-04-17T21:44:12.547968+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }
