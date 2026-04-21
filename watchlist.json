@@ -17137,5 +17137,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "50438446": {
+    "lot_number": "50438446",
+    "title": "2025 TOYOTA RAV4 XLE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 28231.0,
+    "location": "CA - LONG BEACH",
+    "estimate": 30846.0,
+    "url": "https://www.copart.com/lot/50438446/2025-toyota-rav4-xle-ca-long-beach",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0426/b42df9e079d94bd7888b39efa10d05d3_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-04-21T02:47:54.420875+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }
