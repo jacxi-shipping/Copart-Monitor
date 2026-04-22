@@ -17569,5 +17569,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "69442545": {
+    "lot_number": "69442545",
+    "title": "2025 TOYOTA RAV4 XLE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "SIDE",
+    "drive_status": "ENHANCED VEHICLES",
+    "has_keys": true,
+    "odometer": 782.0,
+    "location": "CN - CANADIAN AFFILIATES",
+    "estimate": 45168.36,
+    "url": "https://www.copart.com/lot/69442545/salvage-2025-toyota-rav4-xle-cn-canadian-affiliates",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0825/f50bd02a3a4948ad9bfda6257caf04cd_thb.jpg",
+    "sale_date": 1777557600000,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-04-22T21:53:08.388528+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }
