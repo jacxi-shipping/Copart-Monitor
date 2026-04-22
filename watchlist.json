@@ -17299,5 +17299,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "41604376": {
+    "lot_number": "41604376",
+    "title": "2025 TOYOTA RAV4 XLE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "XLE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 3980.0,
+    "location": "CA - HAYWARD",
+    "estimate": 33274.0,
+    "url": "https://www.copart.com/lot/41604376/salvage-2025-toyota-rav4-xle-ca-hayward",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0326/9cd600e279a4466eaf70d537af8fd784_thb.jpg",
+    "sale_date": 1777402800000,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-04-22T02:46:15.509195+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }
