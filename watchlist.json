@@ -17812,5 +17812,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "50932506": {
+    "lot_number": "50932506",
+    "title": "2024 TOYOTA RAV4 LE",
+    "year": 2024,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "REAR END",
+    "drive_status": "RUNS AND DRIVES",
+    "has_keys": true,
+    "odometer": 13909.0,
+    "location": "MI - DETROIT",
+    "estimate": 26602.0,
+    "url": "https://www.copart.com/lot/50932506/2024-toyota-rav4-le-mi-detroit",
+    "image_url": null,
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-04-24T13:40:49.061233+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }
