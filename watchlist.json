@@ -17785,5 +17785,32 @@
     "final_bid": null,
     "closed_at": null,
     "auction_result": null
+  },
+  "50249966": {
+    "lot_number": "50249966",
+    "title": "2025 TOYOTA RAV4 LE",
+    "year": 2025,
+    "make": "TOYOTA",
+    "model": "RAV4",
+    "trim": "LE",
+    "damage": "SIDE",
+    "drive_status": "ENGINE START PROGRAM",
+    "has_keys": true,
+    "odometer": 15526.0,
+    "location": "IL - CHICAGO NORTH",
+    "estimate": 32490.91,
+    "url": "https://www.copart.com/lot/50249966/2025-toyota-rav4-le-il-chicago-north",
+    "image_url": "https://cs.copart.com/v1/AUTH_svc.pdoc00001/lpp/0426/4f1803d390f04b17ac6314c03a8bea8b_thb.jpg",
+    "sale_date": null,
+    "is_nlr": false,
+    "target_price": 7000,
+    "last_bid": null,
+    "last_bid_status": null,
+    "alerted_closing": false,
+    "added_at": "2026-04-24T02:50:40.271183+00:00",
+    "bid_history": [],
+    "final_bid": null,
+    "closed_at": null,
+    "auction_result": null
   }
 }
